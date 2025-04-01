@@ -1,0 +1,536 @@
+# Query: @wmeimob
+# ContextLines: 1
+
+135 个结果 - 264 文件
+
+components/backend-api/swaggerApi.config.js:
+  4:  * 详细配置请查看 @MetaAdsManager/swagger-api-templates/config.js
+  5   * 这里的配置文件会与默认配置进行合并
+
+components/backend-api/src/request/Admin.ts:
+  353: import { IRequestConfig } from "@MetaAdsManager/request/src/types/fetch-type";
+  354  import requestInstance from "./instance";
+
+components/backend-api/src/request/Circle.ts:
+  43: import { IRequestConfig } from "@MetaAdsManager/request/src/types/fetch-type";
+  44  import requestInstance from "./instance";
+
+components/backend-api/src/request/Wechat.ts:
+  181: import { IRequestConfig } from "@MetaAdsManager/request/src/types/fetch-type";
+  182  import requestInstance from "./instance";
+
+components/backend-pages/src/components/material/index.tsx:
+  9: import { MaterialVo } from '@MetaAdsManager/backend-api';
+  10  
+
+components/backend-pages/src/components/material/components/card/index.tsx:
+  9: import { assembleResizeUrl, getVideoSnapshotUrl } from '@MetaAdsManager/aliyun'
+  10  import CopyToClipboard from 'copy-to-clipboard'
+
+components/backend-pages/src/components/material/components/editModal/index.tsx:
+  5: import { api } from '@MetaAdsManager/backend-api'
+  6  
+
+components/backend-pages/src/components/material/components/moveModal/index.tsx:
+  4: import { api } from '@MetaAdsManager/backend-api'
+  5  import { MallConfMaterialGroupVo } from '../../const'
+
+components/backend-pages/src/components/material/contexts/batch/index.tsx:
+  9: import { api } from '@MetaAdsManager/backend-api'
+  10  
+
+components/backend-pages/src/components/material/contexts/list/index.tsx:
+  10: import { api } from '@MetaAdsManager/backend-api'
+  11  
+
+components/backend-pages/src/pages/sysSetting/resourcesManagement/index.tsx:
+  9: import Clipboard from '@MetaAdsManager/backend-pro/src/components/clipboard'
+  10  
+
+components/backend-pages-shop/src/pages/dashboard/mainAnalysis/components/printChart/index.tsx:
+  3: import mmCurrenty from '@MetaAdsManager/utils/src/mmCurrency'
+  4  import { Row, Col, Card, Typography } from 'antd'
+
+components/backend-pages-shop/src/pages/goodsManagement/goodsClassify/components/dragCard/index.tsx:
+  12: import { getResizeUrl } from '@MetaAdsManager/aliyun';
+  13  import cc from '../../../../../config';
+
+components/backend-pages-shop/src/pages/goodsManagement/goodsClassify/components/dragCard/interface.ts:
+  2: import { ICoventTree } from '@MetaAdsManager/utils/src/tree/types'
+  3  
+
+components/backend-pages-shop/src/pages/goodsManagement/goodsClassify/components/dragCard/toogle.tsx:
+  4: import { useSuperLock } from '@MetaAdsManager/utils/src/hooks/useSuperLock'
+  5  import styles from './index.module.less'
+
+components/backend-pages-shop/src/pages/goodsManagement/goodsCreate/const.ts:
+  2: import { GoodsSkuDTO, GoodsVO } from '@MetaAdsManager/backend-api/src/request/data-contracts'
+  3  
+
+components/backend-pages-shop/src/pages/goodsManagement/goodsCreate/store.ts:
+  6: import { api } from '@MetaAdsManager/backend-api'
+  7  import { IStepOneFormDTO, IStepTwoFormDTO, IStepThreeFormDTO } from './const'
+
+components/backend-pages-shop/src/pages/mallManagement/freight/detail/components/areaTable/index.tsx:
+  13: import mmFormRule from '@MetaAdsManager/form-rules';
+  14  import config from '../../../../../../config';
+
+components/backend-pages-shop/src/pages/orderManagement/orderList/components/orderAmount/index.tsx:
+  5: import mmCurrenty from '@MetaAdsManager/utils/src/mmCurrency';
+  6  import { Space } from 'antd';
+
+components/backend-pages-shop/src/pages/shopSetting/setting/components/orderPresentSetting/index.tsx:
+  2: import { ESettingKey } from '@MetaAdsManager/shop-data/src/enums/ESettingKey'
+  3  import { Button, Card, Divider, Form, Space } from 'antd'
+
+components/backend-pages-shop/src/pages/shopSetting/storeSetting/components/areaAmountList/index.tsx:
+  6: import { ESettingKey } from '@MetaAdsManager/shop-data/src/enums/ESettingKey'
+  7  
+
+components/backend-pro/tsconfig.json:
+  23:       // "@MetaAdsManager/*": ["src/modules/@MetaAdsManager/*"],
+  24        "~/*": ["./src/*"],
+
+components/backend-pro/src/components/form/proFormLimitInput/index.tsx:
+  2: import { concatRule } from '@MetaAdsManager/form-rules'
+  3  import { Input, InputProps } from 'antd'
+
+components/backend-pro/src/components/form/proFormRichText/const.ts:
+  2: import { IMMRichTextProps } from '@MetaAdsManager/rich-text/src/components/richText/const'
+  3  import { Rule } from 'antd/lib/form'
+
+components/backend-pro/src/components/form/proFormRichText/index.tsx:
+  4: import { MMRichText } from '@MetaAdsManager/rich-text'
+  5  
+
+components/backend-pro/src/components/imgUpload/index.tsx:
+  7: import getBase64 from '@MetaAdsManager/utils/src/getBase64'
+  8  
+
+components/backend-pro/src/components/previewList/index.tsx:
+  6: import { getResizeUrl } from '@MetaAdsManager/aliyun';
+  7  
+
+components/backend-pro/src/components/videoUpload/index.tsx:
+  5: import getBase64 from '@MetaAdsManager/utils/src/getBase64'
+  6  import { debounce } from 'lodash-es'
+
+components/backend-pro/src/hooks/useProTableRequest.ts:
+  4: // import { useDownloadManagement } from '@MetaAdsManager/backend-pro/src/components/download-management/useDownloadManagement'
+  5  import useExport from './useExport'
+
+components/backend-pro/src/utils/getCityInfoByIds.ts:
+  2: import flatTree from '@MetaAdsManager/utils/src/tree/flatTree'
+  3  
+
+components/backend-store/tsconfig.json:
+  23:       // "@MetaAdsManager/*": ["src/modules/@MetaAdsManager/*"],
+  24        "~/*": ["./src/*"],
+
+components/backend-store/src/index.ts:
+  2: import { defineShopConfig } from '@MetaAdsManager/shop-data'
+  3  
+
+components/backend-styles/package.json:
+  2:   "name": "@MetaAdsManager/backend-styles",
+  3    "version": "1.0.0",
+
+components/decorator/package.json:
+  2:   "name": "@MetaAdsManager/decorator",
+  3    "version": "1.2.0",
+
+components/event-emitter/package.json:
+  2:   "name": "@MetaAdsManager/event-emitter",
+  3    "version": "1.0.7",
+
+components/form-rules/package.json:
+  2:   "name": "@MetaAdsManager/form-rules",
+  3    "version": "1.2.0",
+
+components/react-native-utils/src/getIsNewIphone.ts:
+  3: import { judgmentNewPhone } from '@MetaAdsManager/utils/src/judgmentNewPhone'
+  4  
+
+components/request/package.json:
+  2:   "name": "@MetaAdsManager/request",
+  3    "version": "1.5.0",
+
+components/rich-text/package.json:
+  2:   "name": "@MetaAdsManager/rich-text",
+  3    "version": "1.2.0",
+
+components/swagger-api-templates/cli.js:
+  14: const programName = name.replace('@MetaAdsManager\/', '');
+  15  
+
+components/swagger-api-templates/package.json:
+  2:   "name": "@MetaAdsManager/swagger-api-templates",
+  3    "description": "swaggerApi生成模板",
+
+components/umi-plugin-access-code/README.md:
+  53: > @MetaAdsManager/backend-shop@2.2.2 code /Users/namehu/mm-frontend/packages/backend-shop
+  54  > umi accessCode
+
+components/utils/package.json:
+  2:   "name": "@MetaAdsManager/utils",
+  3    "version": "1.4.0",
+
+components/wx-rich-text/package.json:
+  2:   "name": "@MetaAdsManager/wx-rich-text",
+  3    "version": "1.0.2",
+
+modules/decoration/decoration-backend/src/components/commModuleComponents/activityModule/goodsCheckList/index.tsx:
+  4: import { IBasicActivityGood } from '@MetaAdsManager-modules/decoration-data'
+  5  import styles from './index.module.less'
+
+modules/decoration/decoration-backend/src/components/decorationModules/activityCommunity/settingItem/index.tsx:
+  8: import { api } from '@MetaAdsManager/backend-api';
+  9  
+
+modules/decoration/decoration-backend/src/components/decorationModules/activityGroupActivityModule/const.ts:
+  3: import { IBasicModuleActivity } from '@MetaAdsManager-modules/decoration-data';
+  4  import { getDefaultComponetStyle } from '../../utils';
+
+modules/decoration/decoration-backend/src/components/decorationModules/activityNews/settingItem/index.tsx:
+  8: import { api } from '@MetaAdsManager/backend-api';
+  9  
+
+modules/decoration/decoration-backend/src/components/decorationModules/defaultTipBlockModule/index.tsx:
+  3: import { IModuleInfo, BasicModuleSignEnum } from '@MetaAdsManager-modules/decoration-data'
+  4  
+
+modules/decoration/decoration-backend/src/components/decorationModules/livePlayerModule/const.ts:
+  2: import { IBasicModuleLiverPlayer } from '@MetaAdsManager-modules/decoration-data'
+  3  import { getDefaultComponetStyle } from '../../utils'
+
+modules/decoration/decoration-backend/src/components/decorationModules/livePlayerModule/settingComponet/index.tsx:
+  11: import { IBasicModuleLiverPlayer } from '@MetaAdsManager-modules/decoration-data'
+  12  
+
+modules/decoration/decoration-backend/src/components/decorationModules/livePlayerModule/settingComponet/livePlayerChooseModal/index.tsx:
+  6: import useProTableRequest from '@MetaAdsManager/backend-pro/src/hooks/useProTableRequest'
+  7  
+
+modules/decoration/decoration-backend/src/components/decorationModules/richTextModule/index.tsx:
+  8: } from '@MetaAdsManager-modules/decoration-data';
+  9  import { FC, memo } from 'react';
+
+modules/decoration/decoration-backend/src/components/decorationModules/separatorModule/index.tsx:
+  5: import { IModuleInfo, BasicModuleSignEnum } from '@MetaAdsManager-modules/decoration-data'
+  6  import settingComponet from './settingComponet'
+
+modules/decoration/decoration-backend/src/components/decorationModules/sliderModule/index.tsx:
+  6: import { IModuleInfo, BasicModuleSignEnum } from '@MetaAdsManager-modules/decoration-data'
+  7  import { getDefaultProps, ISliderModuleProps } from './const'
+
+modules/decoration/decoration-backend/src/components/decorationModules/sliderWithImageModule/settingComponet/index.tsx:
+  2: import { ESliderWithImageMode } from '@MetaAdsManager-modules/decoration-data/src/enums/ESliderWithImageMode'
+  3  import { Form, Space } from 'antd'
+
+modules/decoration/decoration-backend/src/components/hot-zone/index.tsx:
+  6: import { IHotZoneValue } from '@MetaAdsManager-modules/decoration-data'
+  7  import classNames from 'classnames'
+
+modules/decoration/decoration-backend/src/hooks/useDragData.ts:
+  2: import { BasicModuleSignEnum } from '@MetaAdsManager-modules/decoration-data'
+  3  import { DrayData, getDefaultModuleData } from '../components/const'
+
+modules/goods/goods-backend/src/components/goodsSku/index.tsx:
+  4: import { api, GoodsVO } from '@MetaAdsManager/backend-api'
+  5  import useGoodSkuColumns from '../../hooks/useGoodSkuColumns'
+
+modules/goods/goods-backend/src/components/previewList/index.tsx:
+  4: import { getResizeUrl } from '@MetaAdsManager/aliyun'
+  5  
+
+modules/goods/goods-backend/src/enums/goods/index.tsx:
+  3: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil';
+  4  
+
+modules/goods/goods-backend/src/hooks/useGoodSkuColumns.ts:
+  2: import { GoodsSkuDTO, GoodsVO } from '@MetaAdsManager/backend-api'
+  3  import { ProColumns } from '@ant-design/pro-table'
+
+modules/goods/goods-backend/src/pages/goodsComments/const.ts:
+  3: import { CommentsVO } from '@MetaAdsManager/backend-api/src/request/data-contracts';
+  4  
+
+modules/goods/goods-backend/src/pages/goodsComments/components/auditModal/index.tsx:
+  4: import { useSuperLock } from '@MetaAdsManager/utils/src/hooks/useSuperLock';
+  5  import { Button, Form, Modal, message } from 'antd';
+
+modules/goods/goods-backend/src/pages/goodsComments/components/detailModal/index.tsx:
+  4: import useProTableForm from '@MetaAdsManager/backend-pro/src/hooks/useProTableForm';
+  5  import { Form } from 'antd';
+
+modules/goods/goods-backend/src/pages/goodscreate/store.ts:
+  8: import { BuyerGradeListResponseDTO, api } from '@MetaAdsManager/backend-api';
+  9  import { IStepOneFormDTO, IStepTwoFormDTO, IStepThreeFormDTO } from './const';
+
+modules/member/member-backend/src/pages/create/components/cards/memberDescriptionCard/index.tsx:
+  3: import ProFormRichText from '@MetaAdsManager/backend-pro/src/components/form/proFormRichText'
+  4  
+
+modules/member/member-backend/src/pages/create/components/cards/noLevelConditionCard/index.tsx:
+  3: import { OMemberLevelType } from '@MetaAdsManager-modules/member-data/src/enums/EMemberLevelType'
+  4  import { Card } from 'antd'
+
+modules/order/order-backend/src/components/orderAmount/index.tsx:
+  3: import mmCurrenty from '@MetaAdsManager/utils/src/mmCurrency'
+  4  import { Space } from 'antd'
+
+modules/order/order-backend/src/integralGoodsOrder/detail/index.tsx:
+  2: import { EOrderStatus } from '@MetaAdsManager/shop-data/src/enums/order/EOrderStatus'
+  3  import { Button, Space } from 'antd'
+
+modules/order/order-backend/src/integralGoodsOrder/detail/components/expressCard.tsx:
+  7: import { EOrderType } from '@MetaAdsManager/shop-data/src/enums/order/EOrderType'
+  8  
+
+modules/order/order-backend/src/integralGoodsOrder/list/components/shippingModal/index.tsx:
+  7: import { api } from '@MetaAdsManager/backend-api'
+  8  
+
+modules/task/task-backend/src/pages/taskCenter/index.tsx:
+  8: import { getGlobalData } from '@MetaAdsManager/backend-store'
+  9  
+
+packages/backend-notice/swaggerApi.config.js:
+  4:  * 详细配置请查看 @MetaAdsManager/swagger-api-templates/config.js
+  5   * 这里的配置文件会与默认配置进行合并
+
+packages/backend-notice/src/hooks/useNoticeSocket.ts:
+  3: import Request from '@MetaAdsManager/request/src/index'
+  4  import { setInstance } from '../request/instance'
+
+packages/backend-notice/src/request/Notification.ts:
+  11: import { IRequestConfig } from "@MetaAdsManager/request/src/types/fetch-type";
+  12  import requestInstance from "./instance";
+
+packages/backend-shop/src/components/aliyun/index.ts:
+  2: import AliYunWeb from '@MetaAdsManager/aliyun/src/webForm'
+  3  
+
+packages/backend-shop/src/components/goods/assignActivityGoods/index.tsx:
+  7: import useProTableRequest from '@MetaAdsManager/backend-pro/src/hooks/useProTableRequest'
+  8  import { api } from '~/request'
+
+packages/backend-shop/src/components/goods/assignGoods/index.tsx:
+  7: import useProTableRequest from '@MetaAdsManager/backend-pro/src/hooks/useProTableRequest'
+  8  import { api } from '~/request'
+
+packages/backend-shop/src/components/goods/assignTimeBuyActivityGoods/setGoodModal/index.tsx:
+  11: import mmFormRule from '@MetaAdsManager/form-rules'
+  12  
+
+packages/backend-shop/src/components/goods/chooseGoodsDrawer/index.tsx:
+  9: import AlbumColumn from '@MetaAdsManager/backend-pro/src/components/table/albumColumn'
+  10  
+
+packages/backend-shop/src/components/jumpType/index.tsx:
+  4: import convertEnumMap from '@MetaAdsManager/backend-pro/src/utils/convertEnumMap';
+  5  import { Button, Drawer, Tabs, message } from 'antd';
+
+packages/backend-shop/src/components/jumpType/decorations/index.tsx:
+  6: import useProTableRequest from '@MetaAdsManager/backend-pro/src/hooks/useProTableRequest'
+  7  import { HomeFilled } from '@ant-design/icons'
+
+packages/backend-shop/src/components/jumpType/goodCates/index.tsx:
+  7: import { ICoventTree } from '@MetaAdsManager/utils/src/tree/types'
+  8  import { systemConfig } from '~/config'
+
+packages/backend-shop/src/components/jumpType/gooodsGroup/index.tsx:
+  7: import { ICoventTree } from '@MetaAdsManager/utils/src/tree/types';
+  8  
+
+packages/backend-shop/src/components/previewList/index.tsx:
+  4: import { getResizeUrl } from '@MetaAdsManager/aliyun'
+  5  
+
+packages/backend-shop/src/components/proComponents/myProProvider/index.tsx:
+  7: import useNoticeSocket from '@MetaAdsManager/backend-notice/src/hooks/useNoticeSocket'
+  8  import { systemConfig } from '~/config'
+
+packages/backend-shop/src/components/refund/refundAmount/index.tsx:
+  5: import mmCurrenty, { mmAdds } from '@MetaAdsManager/utils/src/mmCurrency';
+  6  import { Space } from 'antd';
+
+packages/backend-shop/src/components/RightContent/index.tsx:
+  7: import NoticeMenu from '@MetaAdsManager/backend-notice/src/noticeMenu'
+  8  import { isDev, systemConfig } from '~/config'
+
+packages/backend-shop/src/enums/activity/EActivityCompletedGoods.ts:
+  3: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil';
+  4  
+
+packages/backend-shop/src/enums/activity/EActivityTypes.ts:
+  3: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil';
+  4  
+
+packages/backend-shop/src/hooks/useOrderTypes.ts:
+  4: import { EOrderStatus, MOrderStatus } from '@MetaAdsManager/shop-data/src/enums/order/EOrderStatus';
+  5  import { EWholeOrderStatus } from '../enums/order/EWholeOrderStatus';
+
+packages/backend-shop/src/hooks/good/useGoodClassifyColumn.ts:
+  5: import convertToTree from '@MetaAdsManager/utils/src/tree/convertToTree'
+  6  
+
+packages/backend-shop/src/hooks/good/useGoodRequest.ts:
+  3: import useProTableRequest from '@MetaAdsManager/backend-pro/src/hooks/useProTableRequest';
+  4  import { getClassifyValues, setClassifyValues } from '~/pages/goodsManagement/goodsClassify/const';
+
+packages/backend-shop/src/pages/activityManagement/listEdit/components/assignActivityGoods/setGoodModal/index.tsx:
+  13: import mmFormRule from '@MetaAdsManager/form-rules';
+  14  import goodsPriceSaleScore from '~/utils/commom';
+
+packages/backend-shop/src/pages/activityManagement/recordDetail/index.tsx:
+  11: import { EOrderType } from '@MetaAdsManager/shop-data/src/enums/order/EOrderType';
+  12  import ShippingCard from '~/pages/orderManagement/orderDetail/components/shippingCard';
+
+packages/backend-shop/src/pages/basicSetting/balanceRecharge/index.tsx:
+  10: import ProFormRichText from '@MetaAdsManager/backend-pro/src/components/form/proFormRichText';
+  11  
+
+packages/backend-shop/src/pages/basicSetting/setting/index.tsx:
+  9: } from '@MetaAdsManager/backend-pages-shop/src/pages/shopSetting/setting';
+  10  import { Card, Space, Tabs } from 'antd';
+
+packages/backend-shop/src/pages/couponManagement/grant/components/grantMobile/index.tsx:
+  4: import { isChinaMobilePhone } from '@MetaAdsManager/backend-pro/src/utils/validator';
+  5  import { Button, Input, message, Space, Typography, Upload } from 'antd';
+
+packages/backend-shop/src/pages/decorationSetting/components/updateDecorationModalForm/index.tsx:
+  6: import ProFormLimitInput from '@MetaAdsManager/backend-pro/src/components/form/proFormLimitInput';
+  7  
+
+packages/backend-shop/src/pages/financialManagement/components/DateQuery/const.ts:
+  3: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil';
+  4  
+
+packages/backend-shop/src/pages/freightTemplate/list/index.tsx:
+  3: import MMFreightListPage from '@MetaAdsManager/backend-pages-shop/src/pages/mallManagement/freight/list';
+  4  import { history } from 'umi';
+
+packages/backend-shop/src/pages/hotelManagement/edit/detail.tsx:
+  3: import ProFormRichText from '@MetaAdsManager/backend-pro/src/components/form/proFormRichText';
+  4  import { upload } from '~/components/aliyun';
+
+packages/backend-shop/src/pages/mallManagement/customer/detail/components/memberInfo/index.tsx:
+  2: import UserMemberInfo, { useService } from '@MetaAdsManager-modules/member-backend/src/components/userMemberInfo'
+  3  
+
+packages/backend-shop/src/pages/mallManagement/customer/detail/components/orderGoodsColumn/index.tsx:
+  4: import { assembleResizeUrl } from '@MetaAdsManager/aliyun'
+  5  
+
+packages/backend-shop/src/pages/mallManagement/memberRights/create/index.tsx:
+  2: import PageMemberCreate, { useService } from '@MetaAdsManager-modules/member-backend/src/pages/create'
+  3  
+
+packages/backend-shop/src/pages/marketingActivity/coupon/compontents/assignTimeBuyActivityCoupon/const.ts:
+  4: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil'
+  5  
+
+packages/backend-shop/src/pages/marketingActivity/coupon/compontents/assignTimeBuyActivityGoods/setGoodModal/index.tsx:
+  13: import mmFormRule from '@MetaAdsManager/form-rules';
+  14  import { ETableType } from '../../../create/const';
+
+packages/backend-shop/src/pages/marketingActivity/groupActivities/compontents/assignTimeBuyActivityGoods/setGoodModal/index.tsx:
+  13: import mmFormRule from '@MetaAdsManager/form-rules';
+  14  import { Form, InputNumber, message } from 'antd';
+
+packages/backend-shop/src/pages/memberManagement/memberDetail/components/balanceInfo/index.tsx:
+  11: import useProTableRequest from '@MetaAdsManager/backend-pro/src/hooks/useProTableRequest';
+  12  import { api } from '~/request';
+
+packages/backend-shop/src/pages/memberManagement/memberDetail/components/basicInfo/mobileChangeLog/index.tsx:
+  6: import useProTableRequest from '@MetaAdsManager/backend-pro/src/hooks/useProTableRequest';
+  7  import { api } from '~/request';
+
+packages/backend-shop/src/pages/memberManagement/memberDetail/components/orderGoodsColumn/index.tsx:
+  7: import { assembleResizeUrl } from '@MetaAdsManager/aliyun';
+  8  
+
+packages/backend-shop/src/pages/newsManagement/classify/components/editModal/index.tsx:
+  2: import ProFormLimitInput from '@MetaAdsManager/backend-pro/src/components/form/proFormLimitInput';
+  3  
+
+packages/backend-shop/src/pages/orderGoodsManagement/basicRule/const.ts:
+  7: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil';
+  8  
+
+packages/backend-shop/src/pages/orderGoodsManagement/orderGoodsList/juniorMemberList/index.tsx:
+  5: import useProTableRequest from '@MetaAdsManager/backend-pro/src/hooks/useProTableRequest';
+  6  import { MemberListDto, api } from '~/request';
+
+packages/backend-shop/src/pages/orderManagement/afterDetail/components/afterExpressCard/index.tsx:
+  6: import { ERefundStatus } from '@MetaAdsManager/shop-data/src/enums/refund/ERefundStatus'
+  7  
+
+packages/backend-shop/src/pages/orderManagement/orderDetail/components/orderInfoCard.tsx:
+  9: import { GoodsMessageDTOS } from '@MetaAdsManager/backend-api/src/request/data-contracts';
+  10  
+
+packages/backend-shop/src/pages/orderManagement/orderDetail/components/rebateCard.tsx:
+  7: import mmCurrenty from '@MetaAdsManager/utils/src/mmCurrency';
+  8  
+
+packages/backend-shop/src/pages/orderManagement/orderDetail/components/goodCardColumn/index.tsx:
+  4: import { getResizeUrl } from '@MetaAdsManager/aliyun'
+  5  import { IGoodCardColumnProps } from './const'
+
+packages/backend-shop/src/pages/orderManagement/orderList/components/shippingGoodsTable/index_.tsx:
+  7: import { MOrderRefundStatus, EOrderRefundStatus } from '@MetaAdsManager/shop-data/src/enums/refund/EOrderRefundStatus'
+  8  import useOrderGoodsShipStatus from '~/hooks/order/useOrderGoodsShipStatus'
+
+packages/backend-shop/src/pages/orderManagement/orderList/components/shippingGoodsTable/index.tsx:
+  12: } from '@MetaAdsManager/shop-data/src/enums/refund/EOrderRefundStatus';
+  13  import useOrderGoodsShipStatus from '~/hooks/order/useOrderGoodsShipStatus';
+
+packages/backend-shop/src/pages/reservationServiceManagement/orderDetail/index.tsx:
+  10: import { getPayTypeName } from '@MetaAdsManager/shop-data/src/enums/order/EPayType';
+  11  
+
+packages/backend-shop/src/pages/user/notices.tsx:
+  2: import NoticeList from '@MetaAdsManager/backend-notice/src/noticeList'
+  3  import { PageContainer } from '@ant-design/pro-layout'
+
+packages/backend-shop/src/request/Admin.ts:
+  417: import { IRequestConfig } from "@MetaAdsManager/request/src/types/fetch-type";
+  418  import requestInstance from "./instance";
+
+packages/backend-shop/src/request/Circle.ts:
+  46: import { IRequestConfig } from "@MetaAdsManager/request/src/types/fetch-type";
+  47  import requestInstance from "./instance";
+
+packages/backend-shop/src/request/instance.ts:
+  3: import Request, { takeTokenRequestInterceptor, requestInterceptorHanlder } from '@MetaAdsManager/request/src/index'
+  4  import { message, notification } from 'antd'
+
+packages/backend-shop/src/utils/commom/index.ts:
+  3: import mmCurrenty from '@MetaAdsManager/utils/src/mmCurrency';
+  4  
+
+packages/data-model/package.json:
+  2:   "name": "@MetaAdsManager/data-model",
+  3    "version": "1.1.0",
+
+packages/shop-data/src/enums/order/EOrderStatus.ts:
+  7: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil';
+  8  
+
+packages/shop-data/src/enums/order/EOrderType.ts:
+  5: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil'
+  6  
+
+packages/shop-data/src/enums/order/EPayType.ts:
+  3: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil';
+  4  
+
+packages/shop-data/src/enums/refund/ERefundScene.ts:
+  2: import { convertEnum } from '@MetaAdsManager/utils/src/enumUtil'
+  3  
+
+packages/shop-data/src/hooks/order/useOrderAmount.ts:
+  3: import { mmAdds } from '@MetaAdsManager/utils/src/mmCurrency';
+  4  import { useMemo } from 'react';

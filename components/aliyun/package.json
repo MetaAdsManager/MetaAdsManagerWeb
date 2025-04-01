@@ -1,0 +1,32 @@
+{
+  "name": "@MetaAdsManager/aliyun",
+  "version": "1.4.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "installationPath": [
+    "src",
+    "index.ts"
+  ],
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.f.wmeimob.com:9922/Frontend/aliyun.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@MetaAdsManager/decorator": "workspace:^",
+    "@MetaAdsManager/utils": "workspace:^1.4.0",
+    "ali-oss": "^6.17.1",
+    "@tarojs/taro": "3.5.11",
+    "@tarojs/taro-h5": "3.5.11"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "extends": ["eslint-config-wmeimob"],
+  "rules": {},
+  "globals": {
+    "REACT_APP_ENV": true
+  }
+}

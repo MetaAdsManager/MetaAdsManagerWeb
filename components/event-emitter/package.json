@@ -1,0 +1,24 @@
+{
+  "name": "@MetaAdsManager/event-emitter",
+  "version": "1.0.7",
+  "description": "事件监听器",
+  "main": "index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "index.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@codeup.aliyun.com:5f855dfb1858a17210466fd0/r_d_center/mm-frontend.git"
+  },
+  "author": "mm-framework",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.21"
+  }
+}

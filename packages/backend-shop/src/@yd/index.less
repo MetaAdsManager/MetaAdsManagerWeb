@@ -1,0 +1,69 @@
+@sp: 15;
+
+.flex(@direction:column) {
+    display: flex;
+    flex-direction: @direction;
+}
+.jcc(@direction:column) {
+    .flex(@direction);
+    justify-content: center;
+}
+.jcsb(@direction:column) {
+    .flex(@direction);
+    justify-content: space-between;
+}
+.jcfe(@direction:column) {
+    .flex(@direction);
+    justify-content: flex-end;
+}
+.aic(@direction:column) {
+    .flex(@direction);
+    align-items: center;
+}
+.aife(@direction:column) {
+    .flex(@direction);
+    align-items: flex-end;
+}
+.f1(@range:1) {flex: @range;}
+
+.ml(@space:@sp) {margin-left: unit(@space, px);}
+.mr(@space:@sp) {margin-right: unit(@space, px);}
+.mt(@space:@sp) {margin-top: unit(@space, px);}
+.mb(@space:@sp) {margin-bottom: unit(@space, px);}
+.ma(@space:@sp) {margin: unit(@space, px);}
+
+.pl(@space:@sp) {padding-left: unit(@space, px);}
+.pr(@space:@sp) {padding-right: unit(@space, px);}
+.pt(@space:@sp) {padding-top: unit(@space, px);}
+.pb (@space:@sp) {padding-bottom: unit(@space, px);}
+.pa(@space:@sp) {padding: unit(@space, px);}
+
+.w(@size) {width: unit(@size, px);}
+.h(@size) {height: unit(@size, px);}
+.fs(@size) {font-size: unit(@size, px);}
+
+.box {box-sizing: border-box;}
+.pointer {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.move {
+    cursor: move;
+    -webkit-tap-highlight-color: transparent;
+}
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.line(@clamp:2) {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @clamp;
+}
+.wrap {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+}

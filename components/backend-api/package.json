@@ -1,0 +1,20 @@
+{
+  "name": "@MetaAdsManager/backend-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/request/index.ts",
+  "scripts": {
+    "api": "mmapi a"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@MetaAdsManager/backend-store": "workspace:^1.0.0",
+    "@MetaAdsManager/request": "workspace:^1.5.0",
+    "jotai": "2.0.2"
+  },
+  "devDependencies": {
+    "@MetaAdsManager/swagger-api-templates": "workspace:^1.2.1"
+  }
+}

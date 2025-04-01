@@ -1,0 +1,8 @@
+tools/**/*.js
+config/**/*.js
+
+swagerApi
+
+scripts/*
+
+components/eslint-config-wmeimob/*

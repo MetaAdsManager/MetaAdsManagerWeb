@@ -1,0 +1,24 @@
+{
+  "name": "@MetaAdsManager/decorator",
+  "version": "1.2.0",
+  "description": "",
+  "author": "xiang.hu <xiang.hu@weimob.com>",
+  "homepage": "",
+  "main": "src/components/index.ts",
+  "license": "ISC",
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "registry": "http://47.103.40.50:3200/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "core-decorators": "^0.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
+  }
+}
