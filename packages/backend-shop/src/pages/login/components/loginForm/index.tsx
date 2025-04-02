@@ -115,12 +115,12 @@ const Component: FC<ILoginFormProps> = (props) => {
 
             <Form.Item noStyle>
                 <div className={styles.opeartions}>
-                    {/* <Button type="link" onClick={() => props.onClick(ECodeScene.FORGOT)}>
-            忘记密码?
-          </Button> */}
-                    {/* <Button type="link" onClick={() => props.onClick(ECodeScene.REG)}>
-            前往注册
-          </Button> */}
+                    <Button type="link" onClick={() => props.onClick(ECodeScene.FORGOT)}>
+                        忘记密码?
+                    </Button>
+                    <Button type="link" onClick={() => props.onClick(ECodeScene.REG)}>
+                        前往注册
+                    </Button>
                 </div>
             </Form.Item>
 

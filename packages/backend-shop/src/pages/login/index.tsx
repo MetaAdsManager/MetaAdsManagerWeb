@@ -15,7 +15,7 @@ const Component: FC = () => {
   return (
     <div className={styles.component}>
       <Card className={styles.card}>
-        <div style={{ textAlign: 'center',fontSize:'30px',fontWeight:'bold' }}>
+        <div style={{ textAlign: 'center',fontSize:'30px',fontWeight:'bold',marginBottom:'20px' }}>
           {/* <img src={Logo} className={styles.logo} /> */}
           <span>MetaAdsManager
           </span>

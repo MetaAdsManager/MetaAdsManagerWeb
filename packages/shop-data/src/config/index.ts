@@ -99,7 +99,7 @@ export const config = {
    * 是否启用消息通知
    * @support backend
    */
-  enableNotice: false,
+  enableNotice: true,
 
   /**
    * 是否启用用户签到任务

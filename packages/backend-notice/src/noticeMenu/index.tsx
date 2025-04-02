@@ -36,7 +36,7 @@ const Component: FC<INoticeMenuProps> = (props) => {
     props.renderItem ||
     ((item) => (
       <List.Item className={styles.noticeMenuStyle_item}>
-        <List.Item.Meta avatar={<BellOutlined />} title={<span>{item.title}</span>} description={<span style={{ fontSize: 12 }}>{item.content}</span>} />
+        <List.Item.Meta avatar={<BellOutlined />} title={<span>{item.title}</span>} style={{overflow:'hidden'}} description={<span style={{ fontSize: 12 }}>{item.content}</span>} />
       </List.Item>
     ))
 
@@ -67,7 +67,7 @@ const Component: FC<INoticeMenuProps> = (props) => {
   )
 
   return (
-    <Dropdown placement="bottomRight" overlay={overlay} overlayStyle={{ width: '336px' }} getPopupContainer={trigger => trigger.parentElement || document.body}>
+    <Dropdown placement="bottomRight" overlay={overlay} overlayStyle={{ width: '336px' }} getPopupContainer={trigger => document.body}>
       <div style={{ height: '48px', cursor: 'pointer' }}>
         <Badge count={unRead} size="small" className={styles.noticeMenuStyle}>
           <BellOutlined />
