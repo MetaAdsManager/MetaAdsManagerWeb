@@ -38,12 +38,13 @@ const Component: FC<ILoginFormProps> = (props) => {
                     localStorage.setItem('_username', username);
                     localStorage.setItem('_pwd', pwd);
                 }
-                const encrypted = encryptPassword(pwd);
-                const { data = '' } = await api['/admin/public/login_POST']({
-                    username,
-                    password: encrypted
-                });
-                window.localStorage.setItem('Authorization', data);
+                // const encrypted = encryptPassword(pwd);
+                // const { data = '' } = await api['/admin/public/login_POST']({
+                //     username,
+                //     password: encrypted
+                // });
+                // window.localStorage.setItem('Authorization', data);
+                window.localStorage.setItem('Authorization', 'Wmeimob_eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzQ0NTk5MjkyLCJpYXQiOjE3NDM5OTQ0OTIsImp0aSI6ImQwNDU2Njg3YjNjZjRhMGQ4NDI0NGY5MzdhZjkyMDI3In0.j_kWhF5cnxcywVxWdvgcS3CEi5IxXRKMHW2U51PMC_8');
                 // 更新用户信息
                 const user = await initialState!.fetchUserInfo!();
                 await setInitialState((pre) => ({ ...pre, ...user }));

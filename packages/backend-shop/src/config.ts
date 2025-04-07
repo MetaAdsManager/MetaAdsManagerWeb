@@ -20,8 +20,8 @@ export const rootUrl = 'http://test.web.shop.wmeimob.cn';
 
 export let apiUrl = {
     dev: baseUrl,
-    uat: 'https://apitest.jhsrsx.com',
-    prd: 'https://api.jhsrsx.com'
+    uat: 'https://uat-admin.vip8lucky.com',
+    prd: 'https://prd-admin.vip8lucky.com'
 }[REACT_APP_ENV || 'prd'];
 
 console.log('apiUrl', apiUrl, REACT_APP_ENV);
