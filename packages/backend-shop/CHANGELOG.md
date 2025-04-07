@@ -12,7 +12,6 @@
 
 - 组件调整
 - Updated dependencies
-  - @MetaAdsManager/backend-notice@2.0.1
   - @MetaAdsManager/shop-data@2.2.1
 
 ## 2.2.0
@@ -26,7 +25,6 @@
 - Updated dependencies
   - @MetaAdsManager/form-rules@1.2.0
   - @MetaAdsManager/aliyun@1.4.0
-  - @MetaAdsManager/backend-notice@2.0.0
   - @MetaAdsManager/backend-pro@1.2.0
   - @MetaAdsManager/request@1.5.0
   - @MetaAdsManager/rich-text@1.2.0
@@ -44,7 +42,6 @@
 - Updated dependencies
   - @MetaAdsManager/form-rules@1.1.0
   - @MetaAdsManager/aliyun@1.3.0
-  - @MetaAdsManager/backend-notice@1.1.0
   - @MetaAdsManager/backend-pro@1.1.0
   - @MetaAdsManager/request@1.4.0
   - @MetaAdsManager/rich-text@1.1.0

@@ -4,7 +4,6 @@ import { IMyProProviderProps } from './const'
 import city from '../valueTypes/city'
 import { useModel, history } from 'umi'
 import { message } from 'antd'
-import useNoticeSocket from '@MetaAdsManager/backend-notice/src/hooks/useNoticeSocket'
 import { systemConfig } from '~/config'
 
 /**
@@ -20,7 +19,6 @@ const Component: FC<IMyProProviderProps> = (props) => {
 
   useVisibilityState()
 
-  useNoticeSocket({ baseUrl: systemConfig.config.enableNotice ? 'http://notification.t4.wmeimob.cn' : '' })
 
   return (
     <ProProvider.Provider

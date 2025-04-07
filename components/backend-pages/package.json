@@ -21,7 +21,6 @@
     "@types/react-dom": "^17.0.0",
     "@umijs/route-utils": "^2.0.0",
     "@MetaAdsManager/aliyun": "workspace:^1.4.0",
-    "@MetaAdsManager/backend-notice": "workspace:^2.0.1",
     "@MetaAdsManager/backend-pro": "workspace:^1.2.0",
     "@MetaAdsManager/form-rules": "workspace:^1.2.0",
     "@MetaAdsManager/request": "workspace:^1.5.0",

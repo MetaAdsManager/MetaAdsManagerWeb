@@ -4,7 +4,6 @@ import React from 'react'
 import { useModel, history } from 'umi'
 import Avatar from './AvatarDropdown'
 import styles from './index.less'
-import NoticeMenu from '@MetaAdsManager/backend-notice/src/noticeMenu'
 import { isDev, systemConfig } from '~/config'
 import { routeNames } from '~/routes'
 export type SiderTheme = 'light' | 'dark'
@@ -31,7 +30,7 @@ const GlobalHeaderRight: React.FC = () => {
         </span>
       )}
 
-      {systemConfig.config.enableNotice && <NoticeMenu onShowAll={() => history.push({ pathname: routeNames.userNotices })} />}
+      {/* {systemConfig.config.enableNotice && <NoticeMenu onShowAll={() => history.push({ pathname: routeNames.userNotices })} />} */}
 
       <Avatar />
     </Space>

@@ -105,9 +105,6 @@ importers:
       '@MetaAdsManager/backend-api':
         specifier: workspace:^1.0.0
         version: link:../backend-api
-      '@MetaAdsManager/backend-notice':
-        specifier: workspace:^2.0.1
-        version: link:../../packages/backend-notice
       '@MetaAdsManager/backend-pro':
         specifier: workspace:^1.2.0
         version: link:../backend-pro
@@ -280,9 +277,6 @@ importers:
       '@MetaAdsManager/backend-api':
         specifier: workspace:^1.0.0
         version: link:../backend-api
-      '@MetaAdsManager/backend-notice':
-        specifier: workspace:^2.0.1
-        version: link:../../packages/backend-notice
       '@MetaAdsManager/backend-pages':
         specifier: workspace:^1.0.0
         version: link:../backend-pages
@@ -1708,37 +1702,6 @@ importers:
         specifier: workspace:^1.0.0
         version: link:../../../components/backend-extend-types
 
-  packages/backend-notice:
-    dependencies:
-      '@MetaAdsManager/backend-pro':
-        specifier: workspace:^1.2.0
-        version: link:../../components/backend-pro
-      '@MetaAdsManager/request':
-        specifier: workspace:^1.5.0
-        version: link:../../components/request
-      '@ant-design/icons':
-        specifier: '*'
-        version: 4.8.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@ant-design/pro-table':
-        specifier: ^2.61.0
-        version: 2.80.8(prop-types@15.8.1)(rc-field-form@1.27.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      antd:
-        specifier: 4.22.8
-        version: 4.22.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      jotai:
-        specifier: 2.0.2
-        version: 2.0.2(react@18.2.0)
-      react:
-        specifier: 18.2.0
-        version: 18.2.0
-    devDependencies:
-      '@MetaAdsManager/swagger-api-templates':
-        specifier: workspace:^1.2.1
-        version: link:../../components/swagger-api-templates
-      '@types/react':
-        specifier: 18.0.26
-        version: 18.0.26
-
   packages/backend-shop:
     dependencies:
       '@MetaAdsManager-modules/activity-backend':
@@ -1771,9 +1734,6 @@ importers:
       '@MetaAdsManager/backend-api':
         specifier: workspace:^1.0.0
         version: link:../../components/backend-api
-      '@MetaAdsManager/backend-notice':
-        specifier: workspace:^2.0.1
-        version: link:../backend-notice
       '@MetaAdsManager/backend-pages':
         specifier: workspace:^1.0.0
         version: link:../../components/backend-pages

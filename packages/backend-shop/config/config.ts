@@ -29,7 +29,7 @@ export default defineConfig({
   autoRoute: REACT_APP_ENV === 'dev',
   // base: publicPath,
   publicPath,
-  hash: false,
+  hash: true,
   // https://v3.umijs.org/zh-CN/plugins/plugin-locale#import-from-umi
   locale: {},
   history: {

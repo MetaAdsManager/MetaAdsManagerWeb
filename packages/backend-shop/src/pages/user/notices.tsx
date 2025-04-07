@@ -1,11 +1,21 @@
 import { FC, memo } from 'react'
-import NoticeList from '@MetaAdsManager/backend-notice/src/noticeList'
 import { PageContainer } from '@ant-design/pro-layout'
 
 const Component: FC = (props) => {
   return (
     <PageContainer>
-      <NoticeList />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+          fontSize: 24,
+          color: '#999'
+        }}
+      >
+        敬请期待
+      </div>
     </PageContainer>
   )
 }
