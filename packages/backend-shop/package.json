@@ -19,7 +19,7 @@
     "serve": "umi-serve",
     "dev": "export NODE_OPTIONS=--openssl-legacy-provider && npm run start",
     "build:dev": "cross-env REACT_APP_ENV=dev umi build",
-    "build:uat": "cross-env REACT_APP_ENV=uat umi build",
+    "build:uat": "cross-env REACT_APP_ENV=uat NODE_OPTIONS=--openssl-legacy-provider umi build",
     "build:prd": "cross-env REACT_APP_ENV=prd umi build",
     "build": "umi build",
     "build:wmshop": "cross-env REACT_APP_ENV=wmshop umi build",

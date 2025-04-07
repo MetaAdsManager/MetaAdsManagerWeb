@@ -10,8 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "@MetaAdsManager/backend-pro": "workspace:^1.2.0",
-    "sockjs-client": "^1.6.1",
-    "stompjs": "^2.3.3",
     "@ant-design/icons": "*",
     "@ant-design/pro-table": "^2.61.0",
     "@MetaAdsManager/request": "workspace:^1.5.0",
@@ -21,7 +19,6 @@
   },
   "devDependencies": {
     "@types/react": "18.0.26",
-    "@MetaAdsManager/swagger-api-templates": "workspace:^1.2.1",
-    "sockjs": "^0.3.24"
+    "@MetaAdsManager/swagger-api-templates": "workspace:^1.2.1"
   }
 }

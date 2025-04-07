@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { useRef, useEffect } from 'react'
-import SockJS from 'sockjs-client'
-import Stomp from 'stompjs'
+// import SockJS from 'sockjs-client'
+// import Stomp from 'stompjs'
 import { api } from '../request'
 
 interface IConnectionOption {
@@ -53,38 +53,39 @@ export default function useNoticeConnection() {
   function createConnection(option: IConnectionOption) {
     const { url, subscribes = [] } = option
 
-    socket.current = new SockJS(url) // 实例化
-    stompClient.current = Stomp.over(socket.current) // 获取STOMP子协议的客户端对象
-    // 定义客户端的认证信息,按需求配置
-    const headers = {
-      // login: 'mylogin', passcode: 'mypasscode', additional header, 'client-id': 'my-client-id'
-    }
+    // socket.current = new SockJS(url) // 实例化
+    // socket.current = url // 实例化
+    // stompClient.current = Stomp.over(socket.current) // 获取STOMP子协议的客户端对象
+    // // 定义客户端的认证信息,按需求配置
+    // const headers = {
+    //   // login: 'mylogin', passcode: 'mypasscode', additional header, 'client-id': 'my-client-id'
+    // }
 
-    // 向服务器发起websocket连接
-    stompClient.current.connect(
-      headers,
-      (frame) => {
-        retryTimes.current = 10
-        option.onConnectSuccess?.()
-        // 订阅服务端topic
-        subscribes.forEach(({ subscribe, callback }) => {
-          stompClient.current.subscribe(subscribe, (msg) => {
-            try {
-              const data = msg.body ? JSON.parse(msg.body) : {}
-              callback?.(data, subscribe)
-              // setNotices((pre) => pre.concat(data))
-            } catch (error) {
-              console.log(error)
-              callback?.({}, subscribe)
-            }
-          })
-        })
-      },
-      (err) => {
-        // 连接发生错误时重新连接
-        reConnection(option)
-      }
-    )
+    // // 向服务器发起websocket连接
+    // stompClient.current.connect(
+    //   headers,
+    //   (frame) => {
+    //     retryTimes.current = 10
+    option.onConnectSuccess?.()
+    //     // 订阅服务端topic
+    //     subscribes.forEach(({ subscribe, callback }) => {
+    //       stompClient.current.subscribe(subscribe, (msg) => {
+    //         try {
+    //           const data = msg.body ? JSON.parse(msg.body) : {}
+    //           callback?.(data, subscribe)
+    //           // setNotices((pre) => pre.concat(data))
+    //         } catch (error) {
+    //           console.log(error)
+    //           callback?.({}, subscribe)
+    //         }
+    //       })
+    //     })
+    //   },
+    //   (err) => {
+    //     // 连接发生错误时重新连接
+    //     reConnection(option)
+    //   }
+    // )
   }
 
   /**
