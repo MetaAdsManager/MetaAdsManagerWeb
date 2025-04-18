@@ -52,7 +52,7 @@ export class Request {
         try {
             const res = await config.adapter!<D>(config as RequestConfig);
             const {
-                data: { data }
+                data
             } = await response.notify<Response<D>>(res);
             !disable && console.timeEnd(label);
             return data!;

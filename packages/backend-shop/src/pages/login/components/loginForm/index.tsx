@@ -11,10 +11,12 @@ import { defaultPwd, defaultAccount, isPrd } from '~/config';
 import { encryptPassword } from '../../const';
 import { useModel, history } from 'umi';
 import { isChinaMobilePhone } from '~/utils/validators';
+import { useFetch, useNavigation } from '~/@yd';
 
 const { Item, useForm } = Form;
 
 const Component: FC<ILoginFormProps> = (props) => {
+    const { post } = useFetch();
     const { initialState, setInitialState } = useModel('@@initialState');
 
     const [form] = useForm();
@@ -34,17 +36,17 @@ const Component: FC<ILoginFormProps> = (props) => {
         form.validateFields().then(async ({ username, pwd }) => {
             setLoading(true);
             try {
-                if (!isPrd) {
-                    localStorage.setItem('_username', username);
-                    localStorage.setItem('_pwd', pwd);
-                }
-                // const encrypted = encryptPassword(pwd);
-                // const { data = '' } = await api['/admin/public/login_POST']({
-                //     username,
-                //     password: encrypted
-                // });
-                // window.localStorage.setItem('Authorization', data);
-                window.localStorage.setItem('Authorization', 'Wmeimob_eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzQ0NTk5MjkyLCJpYXQiOjE3NDM5OTQ0OTIsImp0aSI6ImQwNDU2Njg3YjNjZjRhMGQ4NDI0NGY5MzdhZjkyMDI3In0.j_kWhF5cnxcywVxWdvgcS3CEi5IxXRKMHW2U51PMC_8');
+                // if (!isPrd) {
+                //     localStorage.setItem('_username', username);
+                //     localStorage.setItem('_pwd', pwd);
+                // }
+                const encrypted = encryptPassword(pwd);
+                const data  = await post('/admin/login',{
+                    username,
+                    password: pwd
+                })
+                window.localStorage.setItem('Authorization', data?.user?.token);
+                // window.localStorage.setItem('Authorization', 'Wmeimob_eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzQ0NTk5MjkyLCJpYXQiOjE3NDM5OTQ0OTIsImp0aSI6ImQwNDU2Njg3YjNjZjRhMGQ4NDI0NGY5MzdhZjkyMDI3In0.j_kWhF5cnxcywVxWdvgcS3CEi5IxXRKMHW2U51PMC_8');
                 // 更新用户信息
                 const user = await initialState!.fetchUserInfo!();
                 await setInitialState((pre) => ({ ...pre, ...user }));
@@ -78,17 +80,17 @@ const Component: FC<ILoginFormProps> = (props) => {
                 name='username'
                 validateFirst
                 rules={[
-                    { required: true, message: '请输入手机号码' },
+                    { required: true, message: '请输入账户' },
                     {
                         validator: (_, value) =>
                             isChinaMobilePhone(value)
                                 ? Promise.resolve()
-                                : Promise.reject(new Error('请输入正确的手机号码'))
+                                : Promise.reject(new Error('请输入正确的账户'))
                     }
                 ]}
             >
                 <Input
-                    placeholder='请输入手机号码'
+                    placeholder='请输入账户'
                     size='large'
                     prefix={<UserOutlined style={{ color: '#bfbfbf' }} />}
                 />

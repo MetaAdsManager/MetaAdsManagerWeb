@@ -40,7 +40,7 @@ export default instance;
 export async function takeTokenRequestInterceptor(config: IRequestConfig) {
     const Authorization = window.localStorage.getItem('Authorization');
     if (Authorization) {
-        config.headers = { ...config.headers, Authorization };
+        config.headers = { ...config.headers, Authorization,token: Authorization };
     }
     return config;
 }

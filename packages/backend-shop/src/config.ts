@@ -30,8 +30,8 @@ export const publicPath = PUBLIC_PATH;
 
 export const applicationName = 'MetaAdsManager';
 
-export const defaultAccount = 19999999999; // 默认账号
-export const defaultPwd = 'ocj123456'; // 默认密码
+export const defaultAccount = '15757101467'; // 默认账号
+export const defaultPwd = 'Abc1234'; // 默认密码
 
 export const loginPath = '/login';
 
@@ -61,7 +61,7 @@ createFetch({
     logProps: { disable: isPrd },
     async onHeader(header) {
         const Authorization = localStorage.getItem('Authorization');
-        Authorization && Object.assign(header, { Authorization });
+        Authorization && Object.assign(header, { Authorization,token: Authorization });
         return header;
     },
     async onLayout() {

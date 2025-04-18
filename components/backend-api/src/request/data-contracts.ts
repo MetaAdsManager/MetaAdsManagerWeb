@@ -24064,3 +24064,37 @@ export interface AdminHotelUserExportsGetParams {
    */
   username?: string;
 }
+export interface RolePostParams {
+  /**
+   * 页码
+   * @example
+   */
+  page?: number;
+
+  /**
+   * 分页大小
+   * @example
+   */
+  page_size?: number;
+
+  sortEnum?: string;
+
+  type: number;
+}
+export interface UsePostParams {
+  username?: string;
+  /**
+   * 页码
+   * @example
+   */
+  page?: number;
+
+  /**
+   * 分页大小
+   * @example
+   */
+  page_size?: number;
+
+  sortEnum?: string;
+}
+

@@ -14,16 +14,16 @@ const Settings: LayoutSettings & {
   // logo: '/icons/logo.png',
   // smLogo: '/icons/logoSm.png',
 
-  navTheme: 'light',
+  navTheme: 'realDark',
   // 拂晓蓝
   primaryColor: '#1890ff',
-  layout: 'mix',
+  layout: 'side',
   contentWidth: 'Fluid',
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
   pwa: false,
-  iconfontUrl: ''
+  headerHeight: 64
 }
 
 export default Settings

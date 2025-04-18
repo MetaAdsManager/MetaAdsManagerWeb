@@ -29,7 +29,8 @@ export const initialStateConfig = {
 
 const { logo = '', smLogo = '', ...rest } = defaultSettings
 const newSettings = {
-  ...rest
+  ...rest,
+  navTheme: (localStorage.getItem('navTheme') as any | "realDark" | undefined) || rest?.navTheme
   // logo: /^http(s)?:\/\//.test(logo) ? logo : publicPath + logo.slice(1),
   // smLog: /^http(s)?:\/\//.test(logo) ? smLogo : publicPath + smLogo.slice(1)
 }
@@ -43,7 +44,8 @@ export async function getInitialState(): Promise<{
   settings?: Partial<LayoutSettings>
   currentUser?: {
     name: string
-    email: string
+    email: string,
+    avatar: string,
   }
   loading?: boolean
   authCodes?: string[]
@@ -69,7 +71,19 @@ export async function getInitialState(): Promise<{
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
   return {
-    rightContentRender: () => <RightContent />,
+    rightContentRender: () => <RightContent 
+      onSettingChange={(settings: any) => {
+        localStorage.setItem('navTheme', settings);
+        // getInitialState()
+        //  window.location.reload();
+         setInitialState((preInitialState) => ({
+          ...preInitialState,
+          settings: {
+            ...preInitialState?.settings,
+            navTheme: settings
+          }
+        }))
+    }}/>,
     disableContentMargin: false,
     // waterMarkProps: {
     //   content: initialState?.currentUser?.name

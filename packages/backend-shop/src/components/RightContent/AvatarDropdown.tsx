@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { LogoutOutlined, SettingOutlined, LockOutlined } from '@ant-design/icons'
+import { LogoutOutlined, SettingOutlined, LockOutlined,MoonOutlined,SunOutlined } from '@ant-design/icons'
 import { Avatar, Menu, Spin } from 'antd'
 import { history, useModel } from 'umi'
 import { stringify } from 'querystring'
@@ -13,6 +13,7 @@ import { api } from '~/request'
 
 export type GlobalHeaderRightProps = {
   menu?: boolean
+  onSettingChange?: () => void;
 }
 
 /**
@@ -35,7 +36,7 @@ const loginOut = async () => {
   }
 }
 
-const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = true }) => {
+const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = true,...props }) => {
   const { initialState, setInitialState } = useModel('@@initialState')
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false)
 
@@ -48,7 +49,11 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = true }) => {
         return
       } else if (key === 'changePwd') {
         setShowChangePasswordModal(true)
-      } else {
+      } else if (key === 'SunOutlined') {
+        props.onSettingChange('light')
+      } else if (key === 'MoonOutlined') {
+        props.onSettingChange('realDark')
+      }else {
         history.push(`/user/${key}`)
       }
     },
@@ -94,6 +99,14 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = true }) => {
           <Menu.Item key="setting">
             <SettingOutlined />
             个人设置
+          </Menu.Item>
+          <Menu.Item key="SunOutlined">
+            <SunOutlined />
+            亮色模式
+          </Menu.Item>
+          <Menu.Item key="MoonOutlined">
+            <MoonOutlined />
+            暗色模式
           </Menu.Item>
         </>
       )}

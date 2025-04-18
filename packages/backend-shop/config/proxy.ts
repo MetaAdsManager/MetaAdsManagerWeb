@@ -12,7 +12,7 @@
 export default {
     dev: {
         '/admin': {
-            target: 'https://uat-admin.vip8lucky.com', // UAT
+            target: 'https://api.vip8lucky.com', // UAT
             // target: 'https://dugaoqiang-rushixin.f.wmeimob.com', // 杜高强
             changeOrigin: true,
             pathRewrite: { '^admin': '' }

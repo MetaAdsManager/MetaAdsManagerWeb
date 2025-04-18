@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import useExport from './useExport'
 
 type Params<U> = U & {
-  pageSize?: number
+  page_size?: number
   current?: number
   keyword?: string
 }
@@ -14,7 +14,7 @@ type Sort = Record<string, SortOrder>
 
 type Filter = Record<string, React.ReactText[] | null>
 
-type Fn<U, T> = (params: any, sort: Sort, filter: Filter) => Promise<{ code?: number; msg?: string; data?: { list?: T[]; total?: number } }>
+type Fn<U, T> = (params: any, sort: Sort, filter: Filter) => Promise<{ code?: number; msg?: string; list?:T[] ; total?: number }>
 
 export interface IUseProTableRequestOption<T, U = T> {
   /**
@@ -135,8 +135,8 @@ export default function useProTableRequest<T, U extends Record<string, any> = {}
 
   // 表格请求
   const tableRequst = useCallback(async (params: Params<U>, sort: Sort, filter: Filter) => {
-    const { current, ...rest } = params as Record<string, any>
-    let newParams: any = { ...rest, pageNum: current }
+    const { current,pageSize, ...rest } = params as Record<string, any>
+    let newParams: any = { ...rest, page: current, page_size:pageSize }
     // 格式化并缓存参数
     requestParams.current = option.paramsFormat ? option.paramsFormat(newParams) : newParams
 
@@ -146,7 +146,7 @@ export default function useProTableRequest<T, U extends Record<string, any> = {}
 
     // 恢复缓存表格数据
     if (_cacheData.current.useCache) {
-      newParams = { ...newParams, ..._cacheData.current?.params, pageNum: current }
+      newParams = { ...newParams, ..._cacheData.current?.params, page: current,page_size:pageSize }
       requestParams.current = option.paramsFormat ? option.paramsFormat(newParams) : newParams
 
       console.log('__use cache list data__', _cacheData.current.dataSouce)
@@ -168,16 +168,34 @@ export default function useProTableRequest<T, U extends Record<string, any> = {}
     try {
       // 参数长度过长不处理
       if (JSON.stringify(requestParams.current).length < 1000) {
-        console.log(type,'typetypetypetype')
-        if(type){
+        // if(type){
+        //   const res = await fn(requestParams.current, sort, filter)
+        //   // 如果当前列表为空并且page不为1.则重新发起请求
+        //   if (!res.list?.length && requestParams.current.page !== 1) {
+        //     setTimeout(() => {
+        //       actionRef.current?.reload(true)
+        //     })
+        //   }
+        //   const { list = [] as T[] } = res || {}
+        //   total = res?.total || 0
+        //   data = dataFormat ? dataFormat(list) : list
+        //   console.log(params,'-----------',requestParams.current);
+          
+        //   // 缓存数据
+        //   _cacheData.current = { ..._cacheData.current, dataSouce: data, total, params:{...requestParams.current,...params}, sort, filter }
+        //   dataSourceRef.current = data
+        //   setDATA(data);
+        // }else{
           const res = await fn(requestParams.current, sort, filter)
-          // 如果当前列表为空并且pageNum不为1.则重新发起请求
-          if (!res.list?.length && requestParams.current.pageNum !== 1) {
+          console.log(res,'res')
+          // 如果当前列表为空并且page不为1.则重新发起请求
+          if (!res?.data?.length && requestParams.current.page !== 1) {
             setTimeout(() => {
               actionRef.current?.reload(true)
             })
           }
-          const { list = [] as T[] } = res || {}
+          const list = res?.data || [] as T[]
+          // const { list:data } = res || {}
           total = res?.total || 0
           data = dataFormat ? dataFormat(list) : list
           console.log(params,'-----------',requestParams.current);
@@ -186,24 +204,7 @@ export default function useProTableRequest<T, U extends Record<string, any> = {}
           _cacheData.current = { ..._cacheData.current, dataSouce: data, total, params:{...requestParams.current,...params}, sort, filter }
           dataSourceRef.current = data
           setDATA(data);
-        }else{
-          const res = await fn(requestParams.current, sort, filter)
-          // 如果当前列表为空并且pageNum不为1.则重新发起请求
-          if (!res.data?.list?.length && requestParams.current.pageNum !== 1) {
-            setTimeout(() => {
-              actionRef.current?.reload(true)
-            })
-          }
-          const { list = [] as T[] } = res.data || {}
-          total = res.data?.total || 0
-          data = dataFormat ? dataFormat(list) : list
-          console.log(params,'-----------',requestParams.current);
-          
-          // 缓存数据
-          _cacheData.current = { ..._cacheData.current, dataSouce: data, total, params:{...requestParams.current,...params}, sort, filter }
-          dataSourceRef.current = data
-          setDATA(data);
-        }
+        // }
       }
     } catch (error) {
       console.error(error)

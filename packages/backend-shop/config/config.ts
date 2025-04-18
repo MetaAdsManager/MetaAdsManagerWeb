@@ -17,7 +17,7 @@ const src = path.resolve(__dirname, '../src')
 export default defineConfig({
   plugins: [path.resolve(__dirname, './plugins/buildMonitor.js')],
   accessCodes: {
-    routeInject: REACT_APP_ENV !== 'dev',
+    routeInject: true,
     exclude: ['home', 'login', 'user-setting', 'user-notices', 'sysSetting-resourcesManagement'],
     sql: true
   },

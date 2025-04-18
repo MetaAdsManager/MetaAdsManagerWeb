@@ -6,9 +6,14 @@ import Avatar from './AvatarDropdown'
 import styles from './index.less'
 import { isDev, systemConfig } from '~/config'
 import { routeNames } from '~/routes'
+import settings from '~/locales/zh-CN/settings'
 export type SiderTheme = 'light' | 'dark'
 
-const GlobalHeaderRight: React.FC = () => {
+interface GlobalHeaderRightProps {
+  onSettingChange?: () => void;
+}
+
+const GlobalHeaderRight: React.FC<GlobalHeaderRightProps> = (props) => {
   const { initialState } = useModel('@@initialState')
 
   if (!initialState || !initialState.settings) {
@@ -32,7 +37,7 @@ const GlobalHeaderRight: React.FC = () => {
 
       {/* {systemConfig.config.enableNotice && <NoticeMenu onShowAll={() => history.push({ pathname: routeNames.userNotices })} />} */}
 
-      <Avatar />
+      <Avatar onSettingChange={props.onSettingChange}/>
     </Space>
   )
 }

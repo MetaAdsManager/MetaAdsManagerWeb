@@ -347,7 +347,9 @@ import {
   UpdateBuyerShopInStatusRequestDTO,
   UserChangeStatusInputDto,
   UserChangeSuperiorInputDto,
-  UserRolesDto
+  UserRolesDto,
+  RolePostParams,
+  UsePostParams
 } from "./data-contracts";
 
 import { IRequestConfig } from "@MetaAdsManager/request/src/types/fetch-type";
@@ -5249,5 +5251,33 @@ export const API = {
       url: `/admin/hotelUser/${id}`,
       method: "DELETE",
       ...options
-    }) as unknown as Promise<Object>
+    }) as unknown as Promise<Object>,
+     /**
+   * No description
+   * @name POST /admin/role_list
+   * @summary 新增
+   * @tags admin/权限列表
+   * @response `200` `JsonResultVoid` OK |  `201` `Object` Created |  `401` `Object` Unauthorized |  `403` `Object` Forbidden |  `404` `Object` Not Found
+   */
+   "/admin/roleList_POST": (body: RolePostParams, options: RequestConfig = {}) =>
+    requestInstance({
+      url: `/admin/role_list`,
+      method: "POST",
+      data: body,
+      ...options
+    }) as unknown as Promise<JsonResultVoid>,
+     /**
+   * No description
+   * @name POST /admin/role_list
+   * @summary 新增
+   * @tags admin/权限列表
+   * @response `200` `JsonResultVoid` OK |  `201` `Object` Created |  `401` `Object` Unauthorized |  `403` `Object` Forbidden |  `404` `Object` Not Found
+   */
+   "/admin/userList_POST": (body: UsePostParams, options: RequestConfig = {}) =>
+    requestInstance({
+      url: `/admin/user_list`,
+      method: "POST",
+      data: body,
+      ...options
+    }) as unknown as Promise<JsonResultVoid>,
 };

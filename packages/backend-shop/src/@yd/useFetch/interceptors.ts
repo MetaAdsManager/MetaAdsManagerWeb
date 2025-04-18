@@ -41,7 +41,7 @@ export const responseInterceptor = async (response: Response) => {
         status,
         config: { errCode, onLayout }
     } = response;
-    if (status! >= 400 || code !== 0) {
+    if (status! >= 400 || code !== 200) {
         (status === 401 || errCode!.includes(code)) && onLayout!(response);
         return Promise.reject(response);
     }

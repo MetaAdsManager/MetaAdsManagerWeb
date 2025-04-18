@@ -1,0 +1,37 @@
+[
+    {
+        "id": 68,
+        "title": "系统设置",
+        "sortNum": 15,
+        "children": [
+            {
+                "id": 69,
+                "title": "人员管理",
+                "sortNum": 0,
+                "parentId": 68,
+                "code": "sysSetting-employeeManagement",
+                "type": 0,
+                "memo": "",
+                "icon": "",
+                "visible": true
+            },
+            {
+                "id": 70,
+                "title": "角色管理",
+                "sortNum": 0,
+                "parentId": 68,
+                "code": "sysSetting-roleManagement",
+                "type": 0,
+                "memo": "",
+                "icon": "",
+                "visible": true
+            }
+        ],
+        "parentId": 0,
+        "code": "sysSetting",
+        "type": 0,
+        "memo": "",
+        "icon": "",
+        "visible": true
+    }
+]

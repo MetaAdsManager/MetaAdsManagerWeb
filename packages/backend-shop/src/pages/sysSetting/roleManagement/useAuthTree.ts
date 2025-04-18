@@ -1,6 +1,7 @@
 import { api } from '@MetaAdsManager/backend-api'
 import { TreeResourceVo } from '@MetaAdsManager/backend-api/src/request/data-contracts'
 import { useEffect, useMemo, useState } from 'react'
+import homePageData from '~/h5homePageData.json';
 
 const initCheckedMenus = () => ({ checked: [], halfChecked: [] } as { checked: number[]; halfChecked: number[] })
 
@@ -31,7 +32,7 @@ export default function useAuthTree(props: any) {
 
   useEffect(() => {
     async function init() {
-      const { data: menuTree = [] } = await api['/admin/api/sysResource/tree_GET']({})
+      const menuTree = homePageData
       setMenusTree(menuTree)
       if (data) {
         getRoleAuth(data.id, menuTree)
@@ -47,13 +48,19 @@ export default function useAuthTree(props: any) {
   }, [data, visible])
 
   async function getRoleAuth(id: number, tree: TreeResourceVo[]) {
-    api['/admin/api/sysRole/{id}_GET'](id).then(({ data = {} }) => {
-      const { menuIds = [], buttonIds = [] } = data
+    // api['/admin/api/sysRole/{id}_GET'](id).then(({ data = {} }) => {
+      const { menuIds = [], buttonIds = [] } = {
+        ...data,
+        menuIds: JSON.parse(data.menu_json)
+      }
       const [checked, halfChecked] = filterCheckedTreeMenuIds(menuIds.concat(buttonIds), tree)
 
-      form.setFieldsValue(data)
+      form.setFieldsValue({
+        ...data,
+        role_name: data.name
+      })
       setCheckedMenus({ checked, halfChecked })
-    })
+    // })
   }
 
   function filterCheckedTreeMenuIds(currentIds: number[], tree: TreeResourceVo[]) {
