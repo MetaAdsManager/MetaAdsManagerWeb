@@ -1,0 +1,40 @@
+.descOnly {
+  color: rgba(0, 0, 0, .45) !important;
+  height: 34px;
+  line-height: 34px;
+  display: flex;
+  margin-left: 3%;
+}
+
+
+.listTable {
+  border: 1px solid #DCDCDC;
+  padding: 20px 0 0 20px;
+
+  :global(.ant-table-thead> tr >th) {
+    background-color: white !important;
+    font-size: 14px;
+    color: #7C7C7C;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: unset !important;
+    border: none;
+    border-spacing: 0;
+  }
+
+  :global(.ant-table-tbody>tr>td) {
+    padding: 0;
+    border: none;
+  }
+
+  :global(.ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before) {
+    background-color: #fff;
+  }
+}
+
+.increase {
+  display: flex;
+  padding-left: 3%;
+  margin: 10px 0;
+  color: #709dd7;
+  cursor: pointer;
+}

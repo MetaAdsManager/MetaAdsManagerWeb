@@ -54,7 +54,8 @@ export default function access(initialState: TInitialState) {
 export const codes = [
     'sysSetting',
     'sysSetting-employeeManagement',
-    'sysSetting-roleManagement'
+    'sysSetting-roleManagement',
+    'accountApply'
 ];
 
 export type TAccessCode = (typeof codes)[number];

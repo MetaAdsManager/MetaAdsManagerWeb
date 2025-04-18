@@ -1,5 +1,15 @@
 [
     {
+        "id": 11,
+        "title": "开户申请",
+        "sortNum": 12,
+        "visible": true,
+        "memo": "",
+        "icon": "",
+        "code": "accountApply",
+        "type": 0 
+    },
+    {
         "id": 68,
         "title": "系统设置",
         "sortNum": 15,

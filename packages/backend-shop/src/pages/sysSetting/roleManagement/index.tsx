@@ -68,7 +68,7 @@ const Component: FC = (props) => {
     const resourceIds: number[] = [...checkedMenus.checked, ...checkedMenus.halfChecked]
     try {
       if (editData) {
-        await post('/admin/edit_role',{ ...editData, ...value, menu_json:JSON.stringify(resourceIds) })
+        await post('/admin/edit_role',{ ...editData, ...value,role_id: editData.id, menu_json:JSON.stringify(resourceIds) })
       } else {
         await post('/admin/add_role',{ ...value, menu_json:JSON.stringify(resourceIds) })
       }
