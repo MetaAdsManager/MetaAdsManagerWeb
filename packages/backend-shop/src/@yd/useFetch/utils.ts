@@ -7,7 +7,7 @@ import adapter from './adapter';
 export const defaultConfig: Config = {
     baseURL: '',
     headers: { 'Content-Type': 'application/json' },
-    errCode: [401,100, 40001, 40003],
+    errCode: [401, 40001, 40003],
     onHeader: (headers) => headers,
     onError: ({ errMsg }) => alert(errMsg),
     onLayout: () => {

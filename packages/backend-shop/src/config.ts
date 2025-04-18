@@ -20,7 +20,7 @@ export const rootUrl = 'http://test.web.shop.wmeimob.cn';
 
 export let apiUrl = {
     dev: baseUrl,
-    uat: 'https://uat-admin.vip8lucky.com',
+    uat: 'https://api.vip8lucky.com',
     prd: 'https://prd-admin.vip8lucky.com'
 }[REACT_APP_ENV || 'prd'];
 
@@ -66,9 +66,11 @@ createFetch({
     },
     async onLayout() {
         localStorage.removeItem('Authorization');
-        if (location.hash !== `#${loginPath}`) {
-            location.hash = `#${loginPath}`;
-        }
+        console.log('onLayout',location);
+        location.pathname !== '/login' && (location.replace('/login'));
+        // if (location.hash !== `#${loginPath}`) {
+        //     location.hash = `#${loginPath}`;
+        // }
     },
     onError: ({ errMsg }) => message.error(errMsg)
 });
