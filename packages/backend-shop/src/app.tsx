@@ -51,8 +51,9 @@ export async function getInitialState(): Promise<{
   authCodes?: string[]
   fetchUserInfo?: typeof fetchUserInfo
 }> {
+  console.log(history.location.pathname)
   // 如果是登录页面，不执行
-  if (history.location.pathname !== loginPath) {
+  if (history.location.pathname !== loginPath && history.location.pathname !== '/login') {
     const { currentUser, authCodes } = await fetchUserInfo()
     return {
       fetchUserInfo,

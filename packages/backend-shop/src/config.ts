@@ -33,7 +33,7 @@ export const applicationName = 'MetaAdsManager';
 export const defaultAccount = '15757101467'; // 默认账号
 export const defaultPwd = 'Abc1234'; // 默认密码
 
-export const loginPath = '/login';
+export const loginPath = '/login/';
 
 /**
  * 系统配置项
