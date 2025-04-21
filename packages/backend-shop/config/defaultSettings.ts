@@ -13,8 +13,7 @@ const Settings: LayoutSettings & {
    */
   // logo: '/icons/logo.png',
   // smLogo: '/icons/logoSm.png',
-
-  navTheme: 'realDark',
+  "navTheme": "light",
   // 拂晓蓝
   primaryColor: '#1890ff',
   layout: 'side',
@@ -25,5 +24,4 @@ const Settings: LayoutSettings & {
   pwa: false,
   headerHeight: 64
 }
-
 export default Settings

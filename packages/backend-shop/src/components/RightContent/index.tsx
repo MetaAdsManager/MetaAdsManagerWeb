@@ -37,7 +37,7 @@ const GlobalHeaderRight: React.FC<GlobalHeaderRightProps> = (props) => {
 
       {/* {systemConfig.config.enableNotice && <NoticeMenu onShowAll={() => history.push({ pathname: routeNames.userNotices })} />} */}
 
-      <Avatar onSettingChange={props.onSettingChange}/>
+      <Avatar/>
     </Space>
   )
 }

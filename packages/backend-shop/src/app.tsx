@@ -17,6 +17,35 @@ import { ConfigProvider } from 'antd'
 import instance from '~/request/instance'
 import { setGlobalData } from '@MetaAdsManager/backend-store'
 import { upload } from './components/aliyun'
+import { Theme_Token } from '~/constants/theme';
+import { enable as enableDarkMode, disable as disableDarkMode } from '@umijs/ssr-darkreader';
+if (!localStorage.getItem('theme')) {
+  enableDarkMode({
+    brightness: 100,
+    contrast: 90,
+    sepia: 10
+  });
+  ConfigProvider.config({
+    theme: Theme_Token.dark
+  });
+} else {
+  console.log(localStorage.getItem('theme'),'localStorage.getItem')
+  if (localStorage.getItem('theme') === 'dark') {
+    console.log('dark')
+      //开启 暗黑模式
+      enableDarkMode({
+        brightness: 100,
+        contrast: 90,
+        sepia: 10
+      });
+    } else {
+      //关闭 暗黑模式
+      disableDarkMode();
+    }
+  ConfigProvider.config({
+    theme: localStorage.getItem('theme') as any
+  });
+}
 
 setGlobalData({ upload, instance })
 
@@ -29,8 +58,8 @@ export const initialStateConfig = {
 
 const { logo = '', smLogo = '', ...rest } = defaultSettings
 const newSettings = {
-  ...rest,
-  navTheme: (localStorage.getItem('navTheme') as any | "realDark" | undefined) || rest?.navTheme
+  ...rest
+  // navTheme: (localStorage.getItem('navTheme') as any | "realDark" | undefined) || rest?.navTheme
   // logo: /^http(s)?:\/\//.test(logo) ? logo : publicPath + logo.slice(1),
   // smLog: /^http(s)?:\/\//.test(logo) ? smLogo : publicPath + smLogo.slice(1)
 }
@@ -53,7 +82,7 @@ export async function getInitialState(): Promise<{
 }> {
   console.log(history.location.pathname)
   // 如果是登录页面，不执行
-  if (history.location.pathname !== loginPath && history.location.pathname !== '/login') {
+  if (history.location.pathname !== loginPath && history.location.pathname !== '/login/') {
     const { currentUser, authCodes } = await fetchUserInfo()
     return {
       fetchUserInfo,
@@ -72,19 +101,7 @@ export async function getInitialState(): Promise<{
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
   return {
-    rightContentRender: () => <RightContent 
-      onSettingChange={(settings: any) => {
-        localStorage.setItem('navTheme', settings);
-        // getInitialState()
-        //  window.location.reload();
-         setInitialState((preInitialState) => ({
-          ...preInitialState,
-          settings: {
-            ...preInitialState?.settings,
-            navTheme: settings
-          }
-        }))
-    }}/>,
+    rightContentRender: () => <RightContent />,
     disableContentMargin: false,
     // waterMarkProps: {
     //   content: initialState?.currentUser?.name
@@ -93,7 +110,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     onPageChange: () => {
       const { location } = history
       // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
+      if (!initialState?.currentUser && location.pathname !== loginPath &&location.pathname !== '/login/') {
         history.push(loginPath)
       }
     },
@@ -116,21 +133,8 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     childrenRender: (children, props) => {
       // if (initialState?.loading) return <PageLoading />;
       return (
-        <ConfigProvider input={inputConfig}>
-          {children}
-          {isDev && (
-            <SettingDrawer
-              enableDarkTheme
-              settings={initialState?.settings}
-              onSettingChange={(settings) => {
-                setInitialState((preInitialState) => ({
-                  ...preInitialState,
-                  settings
-                }))
-              }}
-            />
-          )}
-        </ConfigProvider>
+       <> {children}</>
+         
       )
     },
     ...initialState?.settings

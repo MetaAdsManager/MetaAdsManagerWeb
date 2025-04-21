@@ -129,6 +129,7 @@
     "@umijs/preset-dumi": "^1.1.38",
     "@umijs/preset-react": "^2.1.1",
     "@umijs/yorkie": "^2.0.5",
+    "@umijs/ssr-darkreader": "^4.9.45",
     "@MetaAdsManager/swagger-api-templates": "workspace:^1.2.1",
     "carlo": "^0.9.46",
     "cross-env": "^7.0.0",

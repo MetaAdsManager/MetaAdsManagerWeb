@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { LogoutOutlined, SettingOutlined, LockOutlined,MoonOutlined,SunOutlined } from '@ant-design/icons'
-import { Avatar, Menu, Spin } from 'antd'
+import { Avatar, Menu, Spin,ConfigProvider } from 'antd'
 import { history, useModel } from 'umi'
 import { stringify } from 'querystring'
 import HeaderDropdown from '../HeaderDropdown'
@@ -10,10 +10,13 @@ import avatarIcon from '~/assets/images/default_avatar.png'
 import { loginPath } from '~/config'
 import ChangePasswordModal from './changePasswordModal'
 import { api } from '~/request'
+import { enable as enableDarkMode, disable as disableDarkMode } from '@umijs/ssr-darkreader';
+import useThemeChange from '~/hooks/useThemeChange';
+import { Theme_Token } from '~/constants/theme';
+
 
 export type GlobalHeaderRightProps = {
   menu?: boolean
-  onSettingChange?: () => void;
 }
 
 /**
@@ -28,7 +31,7 @@ const loginOut = async () => {
   } catch (error) {}
   window.localStorage.removeItem('Authorization')
   // 跳转
-  if (pathname !== loginPath) {
+  if (pathname !== loginPath && pathname !== '/login/') {
     history.replace({
       pathname: loginPath
       // search: stringify({ redirect: pathname + search })
@@ -36,7 +39,28 @@ const loginOut = async () => {
   }
 }
 
-const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = true,...props }) => {
+const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = true}) => {
+  const { theme, changeTheme } = useThemeChange();
+  const onMenuClickLIne = async (key:any) => {
+    changeTheme(key as 'light' | 'dark' | 'auto');
+    if (key === 'dark') {
+      //开启 暗黑模式
+      enableDarkMode({
+        brightness: 100,
+        contrast: 90,
+        sepia: 10
+      });
+    } else {
+      //关闭 暗黑模式
+      disableDarkMode();
+    }
+    // 修改 antd 主题
+    ConfigProvider.config({
+      theme: Theme_Token[key]
+    });
+    // 修改 localStorage
+    localStorage.setItem('theme', key as string);
+  };
   const { initialState, setInitialState } = useModel('@@initialState')
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false)
 
@@ -50,9 +74,9 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = true,...props
       } else if (key === 'changePwd') {
         setShowChangePasswordModal(true)
       } else if (key === 'SunOutlined') {
-        props.onSettingChange('light')
+        onMenuClickLIne('light')
       } else if (key === 'MoonOutlined') {
-        props.onSettingChange('realDark')
+        onMenuClickLIne('dark')
       }else {
         history.push(`/user/${key}`)
       }
