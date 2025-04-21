@@ -55,7 +55,8 @@ export const codes = [
     'sysSetting',
     'sysSetting-employeeManagement',
     'sysSetting-roleManagement',
-    'accountApply'
+    'accountApply',
+    'sysSetting-customerManagement'
 ];
 
 export type TAccessCode = (typeof codes)[number];

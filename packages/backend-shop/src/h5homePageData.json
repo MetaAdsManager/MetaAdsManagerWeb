@@ -35,6 +35,17 @@
                 "memo": "",
                 "icon": "",
                 "visible": true
+            },
+            {
+                "id": 71,
+                "title": "客户管理",
+                "sortNum": 0,
+                "parentId": 68,
+                "code": "sysSetting-customerManagement",
+                "type": 0,
+                "memo": "",
+                "icon": "",
+                "visible": true
             }
         ],
         "parentId": 0,

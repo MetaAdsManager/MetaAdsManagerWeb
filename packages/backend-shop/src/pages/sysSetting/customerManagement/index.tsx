@@ -1,8 +1,8 @@
 /** @format */
 
 import { FC, memo, useEffect, useState } from 'react';
-import styles from './index.module.less';
-import { IEmployeeManagementProps } from './const';
+// import styles from './index.module.less';
+// import { IEmployeeManagementProps } from './const';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProTable, { ProColumns } from '@ant-design/pro-table';
 import { Button, message, Modal, Alert, Space } from 'antd';
@@ -19,7 +19,7 @@ import { getGlobalData } from '@MetaAdsManager/backend-store';
 import { useFetch } from '~/@yd';
 import dayjs from 'dayjs';
 
-const Component: FC<IEmployeeManagementProps> = (props) => {
+const Component: FC<any> = (props) => {
   const { post, get } = useFetch();
   const [columns] = useState<ProColumns<SysUserVo>[]>([
     { title: '客户名称', dataIndex: 'name' },
@@ -117,7 +117,7 @@ const Component: FC<IEmployeeManagementProps> = (props) => {
   }, [modalProps.visible]);
 
   return (
-    <PageContainer className={styles.employeeManagementStyle}>
+    <PageContainer >
       <ProTable
         actionRef={actionRef}
         rowKey='id'
