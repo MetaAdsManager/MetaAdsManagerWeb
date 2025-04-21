@@ -6904,6 +6904,8 @@ export interface SysUserVo {
 
   /** 用户名 */
   username?: string;
+  /** 客户名称 */
+  name?: string;
 }
 
 export interface TreeResourceVo {
@@ -11089,9 +11091,9 @@ export interface GoodsVO {
 
   /** 商品副标题 */
   subtitle?: string;
-   /** 副选分类 */
+  /** 副选分类 */
   subClassify?: string;
-  subClassifyName?:string;
+  subClassifyName?: string;
   /** 商品留言集合 */
   goodsMessageDTOS?: GoodsMessageDTOS[];
 }
