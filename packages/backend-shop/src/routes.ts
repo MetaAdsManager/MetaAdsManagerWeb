@@ -19,6 +19,8 @@ export const routeNames = {
   /** 人员管理 */
   sysSettingEmployeeManagement: '/sysSetting/employeeManagement',
   /** 角色管理 */
-  sysSettingRoleManagement: '/sysSetting/roleManagement'
+  sysSettingRoleManagement: '/sysSetting/roleManagement',
+  /** 客户管理 */
+  sysSettingCustomerManagement: '/sysSetting/customerManagement'
 }
 
