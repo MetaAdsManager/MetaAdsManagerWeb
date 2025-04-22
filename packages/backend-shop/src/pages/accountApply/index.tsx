@@ -139,7 +139,17 @@ const Component: FC = () => {
 
                 <Descriptions title="基础信息">
                 </Descriptions>
-                <Form form={form} labelCol={{ span: 2 }} wrapperCol={{ span: 7 }} style={{ padding: '13px' }}>
+                <Form
+                    form={form}
+                    initialValues={{
+                        platform: currentPlatform,
+                        accountType: currentActType,
+                        type: currentType,
+                    }}
+                    labelCol={{ span: 2 }}
+                    wrapperCol={{ span: 7 }}
+                    style={{ padding: '13px' }}
+                >
                     <Form.Item label="编号" name='bianhao'>
                         <span>AD250408142752001</span>
                         {/* {form.getFieldValue('bianhao')} */}
@@ -148,20 +158,32 @@ const Component: FC = () => {
                         <span>已取消</span>
                     </Form.Item>
                     <Form.Item label="申请平台" name='platform' rules={[{ required: true }]}>
-                        <Radio.Group onChange={(e) => setCurrentPlatform(e.target.value)} defaultValue={currentPlatform}>
+                        <Radio.Group onChange={(e) => {
+                            setCurrentPlatform(e.target.value);
+                            if (e.target.value === 2 || e.target.value === 3) {
+                                setCurrentType(1);
+                                form.setFieldsValue({ type: 1 }); // 设置表单字段值
+                            }
+                        }}>
                             <Radio value={1}>Facebook</Radio>
                             <Radio value={2}>Tiktok</Radio>
                             <Radio value={3}>Google</Radio>
                         </Radio.Group>
                     </Form.Item>
                     <Form.Item label="账户类型" name='accountType' rules={[{ required: true }]}>
-                        <Radio.Group onChange={(e) => { setCurrentActType(e.target.value) }} defaultValue={currentActType}>
+                        <Radio.Group onChange={(e) => {
+                            setCurrentActType(e.target.value);
+                            if (e.target.value === 2) {
+                                setCurrentType(1);
+                                form.setFieldsValue({ type: 1 }); // 设置表单字段值
+                            }
+                        }} >
                             <Radio value={1}> 国内</Radio>
                             <Radio value={2}>海外</Radio>
                         </Radio.Group>
                     </Form.Item>
                     <Form.Item label="申请类型" name='type' rules={[{ required: true }]}>
-                        <Radio.Group onChange={(e) => setCurrentType(e.target.value)} defaultValue={currentType}>
+                        <Radio.Group onChange={(e) => setCurrentType(e.target.value)}>
                             <Radio value={1}> 新户申请</Radio>
                             {(currentPlatform === 1 && currentActType === 1) && <Radio value={2}>现户申请</Radio>}
                         </Radio.Group>
