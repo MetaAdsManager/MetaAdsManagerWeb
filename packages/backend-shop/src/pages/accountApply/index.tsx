@@ -124,9 +124,6 @@ const Component: FC = () => {
     const handleDelete = (key) => {
         setData(data.filter(item => item.key !== key));
     };
-    useEffect(() => {
-        currentPlatform === 1 && currentActType === 1 ? setCurrentType(2) : setCurrentType(1);
-    }, [currentPlatform, currentActType]);
     return (
         <PageContainer>
             <Steps current={4} style={{ backgroundColor: '#ffffff', padding: 20 }}>
