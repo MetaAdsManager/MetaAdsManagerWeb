@@ -40,10 +40,10 @@ const Component: FC<any> = (props) => {
                   // 这里忽略deptIds. 在ProFormTreeSelect中需要重新组装数据
                   // const { roleIds, ...rest } = record;
                   const company_name = record.name;
-                  setEditData({ ...record, company_name });
+                  setEditData({ ...record });
 
                   setEditData(record);
-                  modalProps.form.setFieldsValue({ ...record, company_name });
+                  modalProps.form.setFieldsValue({ ...record });
                   setVisible(true);
                 }
               },
@@ -52,7 +52,7 @@ const Component: FC<any> = (props) => {
                 text: '删除客户',
                 onClick: async () => {
                   const res = await post('/admin/delete_company', {
-                    company_id: record.id
+                    id: record.id
                   });
                   actionRef.current?.reload();
                 }
@@ -92,8 +92,8 @@ const Component: FC<any> = (props) => {
       if (editData) {
 
         const res = await post('/admin/edit_company', {
-          company_id: saveData.id,
-          company_name: data.company_name
+          id: saveData.id,
+          name: data.name
 
         });
         setVisible(false);
@@ -142,44 +142,14 @@ const Component: FC<any> = (props) => {
       />
 
       <ModalForm {...modalProps} modalProps={{ closable: false }} onFinish={handleFormFinish}>
-        {!account.password ? (
+       
           <ProFormLimitInput
             label='客户名称'
-            name='company_name'
+            name='name'
             rules={[{ required: true }]}
             maxLength={12}
           />
 
-        ) : (
-          <Alert
-            message={
-              account.type === 'change'
-                ? `密码修改成功,请妥善保存账户密码`
-                : `账户创建成功,请妥善保存账户密码`
-            }
-            description={
-              <div>
-                <Space>
-                  <span>账户:</span>
-                  <span>{account.username}</span>
-                  <span>密码:</span>
-                  <span>{account.password}</span>
-
-                  <Clipboard
-                    text={`账号: ${account.username} 密码: ${account.password}`}
-                    onSuccess={() => {
-                      message.success('账户密码已复制');
-                    }}
-                  >
-                    点此复制
-                  </Clipboard>
-                </Space>
-              </div>
-            }
-            type='info'
-            showIcon
-          />
-        )}
       </ModalForm>
     </PageContainer>
   );
