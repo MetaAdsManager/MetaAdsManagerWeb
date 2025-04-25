@@ -92,7 +92,7 @@ const Component: FC<any> = (props) => {
                   console.log('record', record);
                   // 这里忽略deptIds. 在ProFormTreeSelect中需要重新组装数据
                   // const { roleIds, ...rest } = record;
-                  setEditData({ ...record });
+                  // setEditData({ ...record });
 
                   setEditData(record);
                   modalProps.form.setFieldsValue({ ...record });
@@ -152,6 +152,7 @@ const Component: FC<any> = (props) => {
       const saveData = { ...editData, ...rest };
       await post('/admin/edit_account_ticket', {
         ...rest,
+        company_id:saveData.company_id,
         ticket_id: saveData.id
       });
       setVisible(false);
@@ -175,7 +176,7 @@ const Component: FC<any> = (props) => {
       message.success('审核完成');
       actionRef.current?.reload();
     } catch (error) {
-      message.success('审核失败');
+      message.error('审核失败');
     }
 
   }
