@@ -30,7 +30,7 @@ export const MTypeOptions = {
 export enum EAuditOptions {
   /** 待审核 */
   Audit,
-  /** 审核 */
+  /** 通过 */
   Approval,
   /** 驳回 */
   Reject
@@ -38,7 +38,7 @@ export enum EAuditOptions {
 
 export const MAuditOptions = {
   [EAuditOptions.Audit]: '待审核',
-  [EAuditOptions.Approval]: '审核',
+  [EAuditOptions.Approval]: '通过',
   [EAuditOptions.Reject]: '驳回'
 };
 const Component: FC<any> = (props) => {
