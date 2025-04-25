@@ -66,7 +66,7 @@ const Component: FC<any> = (props) => {
       dataIndex: 'audit_status',
       valueType: 'select',
       valueEnum: MAuditOptions,
-      render: (_, { audit_status }) => (audit_status === 0 ? '待审核' : audit_status === 1 ? '审核' : '驳回')
+      render: (_, { audit_status }) => (audit_status === 0 ? '待审核' : audit_status === 1 ? '通过' : '驳回')
     },
     {
       title: '备注', dataIndex: 'mark', hideInSearch: true,
