@@ -41,12 +41,12 @@ const Component: FC<ILoginFormProps> = (props) => {
                 //     localStorage.setItem('_pwd', pwd);
                 // }
                 const encrypted = encryptPassword(pwd);
-                // const data  = await post('/admin/login',{
-                //     username,
-                //     password: pwd
-                // })
-                // window.localStorage.setItem('Authorization', data?.user?.token);
-                window.localStorage.setItem('Authorization', '5901fe40c898a0c4da1caad69f62738e');
+                const data  = await post('/admin/login',{
+                    username,
+                    password: pwd
+                })
+                window.localStorage.setItem('Authorization', data?.user?.token);
+                // window.localStorage.setItem('Authorization', '5901fe40c898a0c4da1caad69f62738e');
                 // 更新用户信息
                 const user = await initialState!.fetchUserInfo!();
                 await setInitialState((pre) => ({ ...pre, ...user }));

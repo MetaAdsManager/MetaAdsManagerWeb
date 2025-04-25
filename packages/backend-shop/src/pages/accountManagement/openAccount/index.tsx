@@ -1,19 +1,33 @@
 /** @format */
 
-import { FC, memo, useState } from 'react';
+import { FC, memo, useState,useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Descriptions, Form, Select, Radio, Input, InputNumber, Button, Row, Col, message } from 'antd';
 import { country, zone } from './country_zone';
 import { useFetch } from '~/@yd';
 const { Option } = Select;
 const Component: FC = () => {
-    const { post } = useFetch();
+    const { post,get } = useFetch();
     const [form] = Form.useForm();
     const [countryData] = useState<any[]>(country);
     const [zoneData] = useState<any[]>(zone);
     const [currentPlatform, setCurrentPlatform] = useState('facebook');
     const [currentActType, setCurrentActType] = useState(1);
     const [accountNum, setAccountNum] = useState(1);
+    const [companyData, setCompanyData] = useState([]);
+    useEffect(() => {
+        handleGetcompany();
+    }, []);
+    const handleGetcompany = async() => {
+       const res = await get('/admin/company_list',{
+            page:1,
+            page_size:100000
+       })
+       setCompanyData(res.data.map((item:any) => ({
+            label: item.name,
+            value: item.id
+        })));
+    };
     const confirmForm = () => {
         form.validateFields().then(async (values) => {
 
@@ -28,6 +42,7 @@ const Component: FC = () => {
                     platform: 'facebook',
                     account_type: 1,
                     account_num: 1,
+                    company_id: ''
                 });
 
             }
@@ -72,7 +87,14 @@ const Component: FC = () => {
                         wrapperCol={{ span: 7 }}
                         style={{ padding: '13px' }}
                     >
+                        <Form.Item label="客户" name='company_id' rules={[{ required: true, message: '请选择客户' }]}>
+                            <Select  options={companyData}>
+                                {/* {companyData.map((item) => (
+                                    <Option key={item} value={item}>{item}</Option>
+                                ))} */}
 
+                            </Select>
+                        </Form.Item>
 
                         <Form.Item label="国家/地区" name='country' rules={[{ required: true, message: '请选择国家/地区' }]}>
                             <Select>
