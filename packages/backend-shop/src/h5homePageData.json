@@ -1,13 +1,38 @@
 [
     {
         "id": 11,
-        "title": "开户申请",
+        "title": "开户管理",
         "sortNum": 12,
-        "visible": true,
+        "children": [
+            {
+                "id": 18,
+                "title": "开户申请",
+                "sortNum": 0,
+                "parentId": 11,
+                "code": "accountManagement-openAccount",
+                "type": 0,
+                "memo": "",
+                "icon": "",
+                "visible": true
+            },
+            {
+                "id": 19,
+                "title": "开户列表",
+                "sortNum": 0,
+                "parentId": 11,
+                "code": "accountManagement-accountList",
+                "type": 0,
+                "memo": "",
+                "icon": "",
+                "visible": true
+            }
+        ],
+        "parentId": 0,
+        "code": "accountManagement",
+        "type": 0,
         "memo": "",
         "icon": "",
-        "code": "accountApply",
-        "type": 0 
+        "visible": true
     },
     {
         "id": 68,

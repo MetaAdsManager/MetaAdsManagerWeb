@@ -10,12 +10,14 @@ export const routeNames = {
   login: '/login',
   /** 首页 */
   home: '/home',
-  /** 开户申请 */
-  accountApply: '/accountApply',
   /** 用户设置 */
   userSetting: '/user/setting',
   /** 消息中心 */
   userNotices: '/user/notices',
+  /** 开户申请 */
+  accountManagementOpenAccount: '/accountManagement/openAccount',
+  /** 开户列表 */
+  accountManagementAccountList: '/accountManagement/accountList',
   /** 人员管理 */
   sysSettingEmployeeManagement: '/sysSetting/employeeManagement',
   /** 角色管理 */
