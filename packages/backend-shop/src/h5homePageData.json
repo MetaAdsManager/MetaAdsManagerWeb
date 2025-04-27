@@ -35,6 +35,17 @@
         "visible": true
     },
     {
+        "id": 71,
+        "title": "客户管理",
+        "sortNum": 12,
+        "parentId": 0,
+        "code": "sysSetting-customerManagement",
+        "type": 0,
+        "memo": "",
+        "icon": "",
+        "visible": true
+    },
+    {
         "id": 68,
         "title": "系统设置",
         "sortNum": 15,
@@ -56,17 +67,6 @@
                 "sortNum": 0,
                 "parentId": 68,
                 "code": "sysSetting-roleManagement",
-                "type": 0,
-                "memo": "",
-                "icon": "",
-                "visible": true
-            },
-            {
-                "id": 71,
-                "title": "客户管理",
-                "sortNum": 0,
-                "parentId": 68,
-                "code": "sysSetting-customerManagement",
                 "type": 0,
                 "memo": "",
                 "icon": "",

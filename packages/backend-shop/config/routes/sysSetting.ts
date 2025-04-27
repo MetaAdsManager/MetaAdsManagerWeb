@@ -15,11 +15,6 @@ export default [
                 path: '/sysSetting/roleManagement',
                 component: './sysSetting/roleManagement'
             },
-            {
-                name: '客户管理',
-                path: '/sysSetting/customerManagement',
-                component: './sysSetting/customerManagement'
-            },
             // {
             //     name: '菜单管理',
             //     path: '/sysSetting/resourcesManagement',

@@ -10,6 +10,8 @@ export const routeNames = {
   login: '/login',
   /** 首页 */
   home: '/home',
+  /** 客户管理 */
+  sysSettingCustomerManagement: '/sysSetting/customerManagement',
   /** 用户设置 */
   userSetting: '/user/setting',
   /** 消息中心 */
@@ -21,8 +23,6 @@ export const routeNames = {
   /** 人员管理 */
   sysSettingEmployeeManagement: '/sysSetting/employeeManagement',
   /** 角色管理 */
-  sysSettingRoleManagement: '/sysSetting/roleManagement',
-  /** 客户管理 */
-  sysSettingCustomerManagement: '/sysSetting/customerManagement'
+  sysSettingRoleManagement: '/sysSetting/roleManagement'
 }
 

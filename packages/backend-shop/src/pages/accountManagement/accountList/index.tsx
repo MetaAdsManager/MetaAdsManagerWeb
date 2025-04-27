@@ -61,6 +61,7 @@ const Component: FC<any> = (props) => {
     { title: '平台', dataIndex: 'platform', hideInSearch: true },
     { title: '国家/地区', dataIndex: 'country', hideInSearch: true },
     { title: '时区', dataIndex: 'time_zone', hideInSearch: true },
+    { title: '账户数量', dataIndex: 'account_num', hideInSearch: true },
     {
       title: '审核状态',
       dataIndex: 'audit_status',
@@ -238,7 +239,7 @@ const Component: FC<any> = (props) => {
         onVisibleChange={setAuditVisible}
         onFinish={onAuditFinish}
       >
-        <ProFormItem label='审核操作' name="audit_status">
+        <ProFormItem label='审核操作' name="audit_status" rules={[{ required: true }]}>
           <Radio.Group >
             <Radio value={1} >通过</Radio>
             <Radio value={2} >驳回</Radio>
