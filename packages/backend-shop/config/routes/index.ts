@@ -2,6 +2,7 @@
 import sysSetting from './sysSetting';
 import user from './user';
 import accountManagement from './accountManagement';
+import trafficManagement from './trafficManagement';
 
 export default [
     { name: '登录', path: '/login', component: './login', layout: false, hideInMenu: true },
@@ -17,6 +18,7 @@ export default [
     // ...integralGoodsManagement,
 
     // ...liveBroadcastManagement,
+    ...trafficManagement,
     ...accountManagement,
     ...sysSetting,
     { path: '/', redirect: '/home' },

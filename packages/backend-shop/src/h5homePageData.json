@@ -35,6 +35,30 @@
         "visible": true
     },
     {
+        "id": 12,
+        "title": "广告管理",
+        "sortNum": 12,
+        "children": [
+            {
+                "id": 121,
+                "title": "广告列表",
+                "sortNum": 0,
+                "parentId": 11,
+                "code": "trafficManagement-list",
+                "type": 0,
+                "memo": "",
+                "icon": "",
+                "visible": true
+            }
+        ],
+        "parentId": 0,
+        "code": "trafficManagement",
+        "type": 0,
+        "memo": "",
+        "icon": "",
+        "visible": true
+    },
+    {
         "id": 71,
         "title": "客户管理",
         "sortNum": 12,

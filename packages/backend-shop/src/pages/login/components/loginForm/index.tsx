@@ -46,7 +46,7 @@ const Component: FC<ILoginFormProps> = (props) => {
                     password: pwd
                 })
                 window.localStorage.setItem('Authorization', data?.user?.token);
-                // window.localStorage.setItem('Authorization', '5901fe40c898a0c4da1caad69f62738e');
+                // window.localStorage.setItem('Authorization', 'a0ec50d5d69610b8f23a14f6e41d7d32');
                 // 更新用户信息
                 const user = await initialState!.fetchUserInfo!();
                 await setInitialState((pre) => ({ ...pre, ...user }));
