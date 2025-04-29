@@ -55,7 +55,7 @@ export const codes = [
     'sysSetting',
     'sysSetting-employeeManagement',
     'sysSetting-roleManagement',
-    'sysSetting-customerManagement',
+    'customerManagement',
     'accountManagement-openAccount',
     'accountManagement-accountList',
     'trafficManagement',

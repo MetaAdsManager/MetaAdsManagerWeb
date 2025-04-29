@@ -9,7 +9,7 @@ export default [
     { name: '首页', path: '/home', component: './home' },
     {
         name: '客户管理',
-        path: '/sysSetting/customerManagement',
+        path: '/customerManagement',
         component: './sysSetting/customerManagement'
     },
     // { name: '开户申请', path: '/accountApply', component: './accountApply' },

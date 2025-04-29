@@ -47,20 +47,19 @@ const Component: FC<any> = (props) => {
   const [auditVisible, setAuditVisible] = useState(false);
   const [currentTicketId, setcurrentTicketId] = useState();
   const [columns] = useState<ProColumns[]>([
-    { title: '广告ID', dataIndex: 'account_id', hideInSearch: false },
-    { title: '广告名称', dataIndex: 'account_name', hideInSearch: true },
+    { title: '账户ID', dataIndex: 'account_id', hideInSearch: false },
+    { title: '账户名称', dataIndex: 'account_name', hideInSearch: false },
     { title: '有效状态', dataIndex: 'time_zone', hideInSearch: true },
-    { title: '账户ID', dataIndex: 'account_num', hideInSearch: false },
-    { title: '账户名称', dataIndex: 'account_num', hideInSearch: false },
     { title: 'BMID', dataIndex: 'bm_id', hideInSearch: false },
-    { title: 'BM名称', dataIndex: 'account_num', hideInSearch: true },
+    { title: 'BM名称', dataIndex: 'bm_name', hideInSearch: true },
+    { title: '开户工单ID', dataIndex: 'ticket_id', hideInSearch: false },
     {
       title: '审核反馈',
       dataIndex: 'audit_status',
       valueType: 'select',
       hideInSearch: true,
       valueEnum: MAuditOptions,
-      render: (_, { audit_status }) => (audit_status === 0 ? '待审核' : audit_status === 1 ? '通过' : '驳回')
+      render: (_, { audit_status }) => (audit_status === 0 ? '' : audit_status === 1 ? '' : '')
     },
     {
       title: '操作',
@@ -92,8 +91,6 @@ const Component: FC<any> = (props) => {
               }
             ]}
           />
-
-
         );
       }
     }
@@ -115,17 +112,14 @@ const Component: FC<any> = (props) => {
 
   const { modalProps, editData, setEditData, setVisible } = useProTableForm();
   const handleFormFinish = async (data) => {
-    if (account.password) {
-      setVisible(false);
-      return;
-    }
     try {
       let { ...rest } = data;
       const saveData = { ...editData, ...rest };
-      await post('/admin/edit_account_ticket', {
+      await post('/admin/edit_company_account', {
         ...rest,
         company_id:saveData.company_id,
-        ticket_id: saveData.id
+        ticket_id: saveData.ticket_id,
+        id: saveData.id
       });
       setVisible(false);
       message.success('修改成功');
@@ -167,7 +161,20 @@ const Component: FC<any> = (props) => {
           ]
         }}
       />
-
+      <ModalForm {...modalProps} modalProps={{ closable: false }} onFinish={handleFormFinish}>
+        <ProFormItem label="账户ID" name='account_id' rules={[{ required: true }]}>
+          <Input />
+        </ProFormItem>
+        <ProFormItem label="账户名称" name='account_name' rules={[{ required: true }]}>
+          <Input />
+        </ProFormItem>
+        <ProFormItem label="BMID" name='bm_id' rules={[{ required: true }]}>
+          <Input />
+        </ProFormItem>
+        <ProFormItem label="BM名称" name="bm_name" rules={[{ required: true }]}>
+          <Input />
+        </ProFormItem>
+      </ModalForm>
     </PageContainer>
   );
 };

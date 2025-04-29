@@ -3,7 +3,7 @@
 import { FC, memo, useEffect, useState } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProTable, { ProColumns } from '@ant-design/pro-table';
-import { message, Radio, Select, InputNumber, Input } from 'antd';
+import { message, Radio, Select, InputNumber, Input, Table,Button } from 'antd';
 import { ModalForm } from '@ant-design/pro-form';
 import useProTableRequest from '@MetaAdsManager/backend-pro/src/hooks/useProTableRequest';
 import OperationsColumns from '@MetaAdsManager/backend-pro/src/components/table/operationsColumns';
@@ -13,6 +13,7 @@ import { useFetch } from '~/@yd';
 import { useForm } from 'antd/lib/form/Form';
 import { ProFormItem } from '@ant-design/pro-form';
 import { country, zone } from '../openAccount/country_zone';
+import { set } from 'lodash';
 const { Option } = Select;
 /** @format */
 
@@ -46,6 +47,8 @@ const Component: FC<any> = (props) => {
   const [auditForm] = useForm()
   const [auditVisible, setAuditVisible] = useState(false);
   const [currentTicketId, setcurrentTicketId] = useState();
+  const [currentCompanyId, setcurrentCompanyId] = useState();
+  const [accoutListshow, setaccoutListshow] = useState(true);
   const [countryData] = useState<any[]>(country);
   const [zoneData] = useState<any[]>(zone);
   const [columns] = useState<ProColumns[]>([
@@ -116,8 +119,24 @@ const Component: FC<any> = (props) => {
                 show: record.audit_status === 0,
                 text: <a onClick={() => {
                   setcurrentTicketId(record.id);
+                  setcurrentCompanyId(record.company_id);
+                  let newData = []
+                  for (let i = 1; i <= record.account_num; i++) {
+                    newData.push(
+                      {
+                        key: String(i+1),
+                        account_id: '',
+                        account_name: '',
+                        bm_id: '',
+                        bm_name: '',
+                        action: '删除'
+                    })
+                  }
+                  setData(newData);
+                  setaccoutListshow(true);
                   setAuditVisible(true);
-                }}>审核</a>
+                }}
+                >审核</a>
               }
             ]}
           />
@@ -128,6 +147,79 @@ const Component: FC<any> = (props) => {
     }
   ]);
   const [account, setAccount] = useState<LoginOutputDto & { type?: 'change' }>({});
+  const handleChange = (value, key,index) => {
+    const newData = [...data];
+    // console.log(value,'index', index,key);
+    newData[index][key] = value;
+    setData(newData);
+  }
+   
+
+  const columnsAccount = [
+      {
+          title: '账户ID',
+          dataIndex: 'account_id',
+          key: 'account_id',
+          width: '20%',
+          render: (text,record,index) => (
+            <Input value={record['account_id']} onChange={e => handleChange(e.target.value, 'account_id',index)}/>
+          )
+      },
+      {
+          title: '账户名称',
+          dataIndex: 'account_name',
+          key: 'account_name',
+          width: '20%',
+          render: (text,record,index) => (
+            <Input value={record['account_name']} onChange={e => handleChange(e.target.value, 'account_name',index)}/>
+          )
+      },
+      {
+        title: 'BMID',
+        dataIndex: 'bm_id',
+        key: 'bm_id',
+        width: '20%',
+        render: (text,record,index) => (
+          <Input value={record['bm_id']} onChange={e => handleChange(e.target.value, 'bm_id',index)}/>
+        )
+      },
+      {
+          title: 'BM名称',
+          dataIndex: 'bm_name',
+          key: 'bm_name',
+          width: '20%',
+          render: (text,record,index) => (
+            <Input value={record['bm_name']} onChange={e => handleChange(e.target.value, 'bm_name',index)}/>
+          )
+      },
+      {
+          title: '',
+          dataIndex: 'action',
+          key: 'action',
+          width: '20%',
+          render: (text, record) => (
+              <Button style={{ display: data.length <= 1 ? 'none' : 'inline-block' }} onClick={() => handleDelete(record.key)}>
+                  {text}
+              </Button>
+          )
+      }
+  ];
+
+  const [data, setData] = useState([]);
+  const createNewItem = () => {
+      const newItem = {
+          key: String(data.length + 1),
+          account_id: '',
+          account_name: '',
+          bm_id: '',
+          bm_name: '',
+          action: '删除'
+      };
+      setData([...data, newItem]);
+  }
+  const handleDelete = (key) => {
+      setData(data.filter(item => item.key !== key));
+  };
 
 
   const { request, actionRef } = useProTableRequest(
@@ -136,7 +228,7 @@ const Component: FC<any> = (props) => {
       dataFormat: (data) =>
         data.map((item: any) => {
           return {
-            ...item,
+            ...item
           };
         })
     }
@@ -170,13 +262,30 @@ const Component: FC<any> = (props) => {
     }
   }, [modalProps.visible]);
   const onAuditFinish = async (val) => {
+    const allNonEmpty = data.every(obj => Object.values(obj).every(value => value !== null && value !== undefined && value !== ''));
+    if (!allNonEmpty && val.audit_status === 1) {
+      message.error('请填写所有账户信息');
+      return;
+    }
     try {
       await post('/admin/audit_account_ticket', { ...val, ticket_id: currentTicketId })
+      if(val.audit_status === 1) {
+        const newData = data.map((item) => ({
+          account_id: item.account_id,
+          account_name: item.account_name,
+          bm_id: item.bm_id,
+          bm_name: item.bm_name,
+          ticket_id:currentTicketId,
+          company_id:currentCompanyId
+        }))
+        await post('/admin/add_company_accounts', newData)
+      }
       auditForm.resetFields()
       setAuditVisible(false)
       message.success('审核完成');
       actionRef.current?.reload();
     } catch (error) {
+      auditForm.resetFields()
       message.error('审核失败');
     }
 
@@ -197,7 +306,7 @@ const Component: FC<any> = (props) => {
         }}
       />
 
-      <ModalForm {...modalProps} modalProps={{ closable: false, }} onFinish={handleFormFinish}>
+      <ModalForm {...modalProps} modalProps={{ closable: false }} onFinish={handleFormFinish}>
         <ProFormItem label="申请平台" name='platform' rules={[{ required: true }]}>
           <Radio.Group >
             <Radio value={'facebook'}>Facebook</Radio>
@@ -237,14 +346,39 @@ const Component: FC<any> = (props) => {
         form={auditForm}
         visible={auditVisible}
         onVisibleChange={setAuditVisible}
+        modalProps={{ destroyOnClose: true }}
         onFinish={onAuditFinish}
       >
         <ProFormItem label='审核操作' name="audit_status" rules={[{ required: true }]}>
-          <Radio.Group >
+          <Radio.Group onChange={(e) => {
+            if (e.target.value === 1) {
+              setaccoutListshow(false);
+            } else {
+              setaccoutListshow(true);
+            }
+          }}
+          >
             <Radio value={1} >通过</Radio>
             <Radio value={2} >驳回</Radio>
           </Radio.Group>
         </ProFormItem>
+        <ProFormItem label='账户列表' hidden={accoutListshow} >
+            <Table
+                columns={columnsAccount}
+                dataSource={data}
+                pagination={false}
+                bordered={true}
+                size="small"
+                style={{
+                    width: '100%'
+
+                }}
+            />
+          <div onClick={() => createNewItem()} style={{cursor:'pointer'}}>
+              <span role="img" aria-label="plus" style={{ marginRight: '4px', color: '#709dd7' }}><svg viewBox="64 64 896 896" focusable="false" data-icon="plus" width="13px" height="13px" fill="currentColor" aria-hidden="true"><defs><style /></defs><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z" /><path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z" /></svg></span>
+              <span>新增</span>
+          </div>
+        </ProFormItem>       
         <ProFormItem label='审核理由' name="audit_mark">
           <Input.TextArea />
         </ProFormItem>

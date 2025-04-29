@@ -11,11 +11,13 @@ export const routeNames = {
   /** 首页 */
   home: '/home',
   /** 客户管理 */
-  sysSettingCustomerManagement: '/sysSetting/customerManagement',
+  customerManagement: '/customerManagement',
   /** 用户设置 */
   userSetting: '/user/setting',
   /** 消息中心 */
   userNotices: '/user/notices',
+  /** 广告列表 */
+  trafficManagementList: '/trafficManagement/list',
   /** 开户申请 */
   accountManagementOpenAccount: '/accountManagement/openAccount',
   /** 开户列表 */

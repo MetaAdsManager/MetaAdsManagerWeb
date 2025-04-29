@@ -15,7 +15,7 @@ export default [
                 path: '/accountManagement/accountList',
                 component: './accountManagement/accountList'
             },
-            { redirect: '/accountManagement/accountList' }
+            { redirect: '/accountManagement/openAccount' }
         ]
     }
 ];

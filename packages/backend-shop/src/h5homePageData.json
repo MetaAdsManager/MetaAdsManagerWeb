@@ -63,7 +63,7 @@
         "title": "客户管理",
         "sortNum": 12,
         "parentId": 0,
-        "code": "sysSetting-customerManagement",
+        "code": "customerManagement",
         "type": 0,
         "memo": "",
         "icon": "",
