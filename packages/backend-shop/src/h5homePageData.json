@@ -41,7 +41,7 @@
         "children": [
             {
                 "id": 121,
-                "title": "广告列表",
+                "title": "广告账户列表",
                 "sortNum": 0,
                 "parentId": 11,
                 "code": "trafficManagement-list",

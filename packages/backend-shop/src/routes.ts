@@ -16,7 +16,7 @@ export const routeNames = {
   userSetting: '/user/setting',
   /** 消息中心 */
   userNotices: '/user/notices',
-  /** 广告列表 */
+  /** 广告账户列表 */
   trafficManagementList: '/trafficManagement/list',
   /** 开户申请 */
   accountManagementOpenAccount: '/accountManagement/openAccount',

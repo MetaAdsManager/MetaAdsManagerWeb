@@ -6,7 +6,7 @@ export default [
         path: '/trafficManagement',
         routes: [
             {
-                name: '广告列表',
+                name: '广告账户列表',
                 path: '/trafficManagement/list',
                 component: './trafficManagement/list'
             },
