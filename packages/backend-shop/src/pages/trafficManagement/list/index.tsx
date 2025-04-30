@@ -57,6 +57,7 @@ const Component: FC<any> = (props) => {
     formRef.current?.setFieldsValue({   //这个formRef作用在ProTable标签上，如下图
       company_id: res.data[0].id
     });
+    formRef.current?.submit();
     actionRef.current?.reload();
     // setUserList(res.data.map((item:any) => ({
     //     label: item.name,
@@ -82,7 +83,13 @@ const Component: FC<any> = (props) => {
       //     options: UserList
       // },
       fieldProps: {
-
+        onChange: (value) => {
+          console.log(value, 'value');
+          formRef.current?.setFieldsValue({
+            company_id: value
+          });
+          formRef.current?.submit();
+        },
         allowClear: false // 不允许清除，强制有值
 
       },
@@ -96,10 +103,28 @@ const Component: FC<any> = (props) => {
         );
       }
     },
-    { title: '账户ID', dataIndex: 'account_id', hideInSearch: false },
+    { title: '账户ID', dataIndex: 'account_id', hideInSearch: false,fieldProps: {
+      onChange: (e) => {
+        formRef.current?.setFieldsValue({
+          account_id: e.target.value
+        });
+        formRef.current?.submit();
+      },
+      allowClear: false // 不允许清除，强制有值
+
+    } },
     { title: '账户名称', dataIndex: 'account_name', hideInSearch: false },
     { title: '有效状态', dataIndex: 'time_zone', hideInSearch: true },
-    { title: 'BMID', dataIndex: 'bm_id', hideInSearch: false },
+    { title: 'BMID', dataIndex: 'bm_id', hideInSearch: false,fieldProps: {
+      onChange: (e) => {
+        formRef.current?.setFieldsValue({
+          bm_id: e.target.value
+        });
+        formRef.current?.submit();
+      },
+      allowClear: false // 不允许清除，强制有值
+
+    }, },
     { title: 'BM名称', dataIndex: 'bm_name', hideInSearch: false },
     { title: '开户工单ID', dataIndex: 'ticket_id', hideInSearch: false },
     {
@@ -165,11 +190,17 @@ const Component: FC<any> = (props) => {
 
 
   const { request, actionRef } = useProTableRequest(
-    (params) => {
-      const defaultParams = {
-        company_id: formRef.current?.getFieldValue('company_id') || 0,
-      };
-      params = { ...defaultParams, ...params };
+    async(params) => {
+      if(formRef.current?.getFieldValue('company_id')){
+        params = {...params };
+      }else{
+        const list = await handleGetcompany();
+        const defaultParams = {
+          company_id: list[0].value
+        };
+        params = { ...defaultParams, ...params };
+      }
+      // params = { ...defaultParams, ...params };
       return get('/admin/company_account_list', {
         ...params
       })
@@ -183,9 +214,9 @@ const Component: FC<any> = (props) => {
         })
     }
   );
-  useEffect(() => {
-    actionRef.current?.reload();
-  }, []);
+  // useEffect(() => {
+  //   actionRef.current?.reload();
+  // }, []);
   const { modalProps, editData, setEditData, setVisible } = useProTableForm();
   const handleFormFinish = async (data) => {
     try {
