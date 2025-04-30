@@ -1,6 +1,6 @@
 /** @format */
 
-import { FC, memo, useEffect, useState,useRef } from 'react';
+import { FC, memo, useEffect, useState, useRef } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProTable, { ProColumns } from '@ant-design/pro-table';
 import { message, Radio, Select, InputNumber, Input } from 'antd';
@@ -11,7 +11,7 @@ import useProTableForm from '@MetaAdsManager/backend-pro/src/hooks/useProTableFo
 import { LoginOutputDto } from '@MetaAdsManager/backend-api/src/request/data-contracts';
 import { useFetch } from '~/@yd';
 import { useForm } from 'antd/lib/form/Form';
-import { ProFormItem,ProFormInstance } from '@ant-design/pro-form';
+import { ProFormItem, ProFormInstance } from '@ant-design/pro-form';
 import dayjs from 'dayjs';
 // import { country, zone } from '../openAccount/country_zone';
 /** @format */
@@ -48,10 +48,11 @@ const Component: FC<any> = (props) => {
   const [currentTicketId, setcurrentTicketId] = useState();
   const [UserList, setUserList] = useState([]);
   const formRef = useRef<ProFormInstance>();
-  const handleGetcompany = async() => {
-    const res = await get('/admin/company_list',{
-         page:1,
-         page_size:100000
+
+  const handleGetcompany = async () => {
+    const res = await get('/admin/company_list', {
+      page: 1,
+      page_size: 100000
     })
     formRef.current?.setFieldsValue({   //这个formRef作用在ProTable标签上，如下图
       company_id: res.data[0].id
@@ -61,9 +62,9 @@ const Component: FC<any> = (props) => {
     //     label: item.name,
     //     value: item.id
     // })));
-    return res.data.map((item:any) => ({
-        label: item.name,
-        value: item.id
+    return res.data.map((item: any) => ({
+      label: item.name,
+      value: item.id
     }))
   };
   // useEffect(() => {
@@ -71,29 +72,29 @@ const Component: FC<any> = (props) => {
   // }, []);
   const [columns] = useState<ProColumns[]>([
     {
-        title: '客户Id',
-        dataIndex: 'company_id',
-        key: 'company_id',
-        valueType: 'select',
-        // debounceTime: 500,
-        // fieldProps: {
-        //     showSearch: true,
-        //     options: UserList
-        // },
-        fieldProps: {
+      title: '客户Id',
+      dataIndex: 'company_id',
+      key: 'company_id',
+      valueType: 'select',
+      // debounceTime: 500,
+      // fieldProps: {
+      //     showSearch: true,
+      //     options: UserList
+      // },
+      fieldProps: {
 
-          allowClear: false // 不允许清除，强制有值
-          
-        },
-        hideInTable: true,
-        request: handleGetcompany,
-        render: (_, record, index) => {
-            return (
-                <>
-                    <span>{record.company_id || '-'}</span>
-                </>
-            );
-        }
+        allowClear: false // 不允许清除，强制有值
+
+      },
+      hideInTable: true,
+      request: handleGetcompany,
+      render: (_, record, index) => {
+        return (
+          <>
+            <span>{record.company_id || '-'}</span>
+          </>
+        );
+      }
     },
     { title: '账户ID', dataIndex: 'account_id', hideInSearch: false },
     { title: '账户名称', dataIndex: 'account_name', hideInSearch: false },
@@ -107,15 +108,15 @@ const Component: FC<any> = (props) => {
       key: 'add_time',
       valueType: 'dateRange',
       search: {
-          transform: (values) => {
-              return {
-                  created_start: values[0],
-                  created_end: values[1]
-              };
-          }
+        transform: (values) => {
+          return {
+            created_start: values[0],
+            created_end: values[1]
+          };
+        }
       },
       render: (_, record) => {
-          return record.add_time?dayjs.unix(record.add_time).format('YYYY-MM-DD HH:mm:ss'):''
+        return record.add_time ? dayjs.unix(record.add_time).format('YYYY-MM-DD HH:mm:ss') : ''
       }
     },
     {
@@ -164,9 +165,15 @@ const Component: FC<any> = (props) => {
 
 
   const { request, actionRef } = useProTableRequest(
-    (params) => get('/admin/company_account_list', {
-      ...params
-    }),
+    (params) => {
+      const defaultParams = {
+        company_id: formRef.current?.getFieldValue('company_id') || 0,
+      };
+      params = { ...defaultParams, ...params };
+      return get('/admin/company_account_list', {
+        ...params
+      })
+    },
     {
       dataFormat: (data) =>
         data.map((item: any) => {
@@ -176,7 +183,9 @@ const Component: FC<any> = (props) => {
         })
     }
   );
-
+  useEffect(() => {
+    actionRef.current?.reload();
+  }, []);
   const { modalProps, editData, setEditData, setVisible } = useProTableForm();
   const handleFormFinish = async (data) => {
     try {
@@ -184,7 +193,7 @@ const Component: FC<any> = (props) => {
       const saveData = { ...editData, ...rest };
       await post('/admin/edit_company_account', {
         ...rest,
-        company_id:saveData.company_id,
+        company_id: saveData.company_id,
         ticket_id: saveData.ticket_id,
         id: saveData.id
       });
